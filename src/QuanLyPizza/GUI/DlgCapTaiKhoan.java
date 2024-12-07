@@ -1,12 +1,9 @@
 package QuanLyPizza.GUI;
 
-import QuanLyPizza.BUS.PhanQuyenBUS;
 import QuanLyPizza.BUS.TaiKhoanBUS;
-import QuanLyPizza.DTO.PhanQuyen;
+
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.util.ArrayList;
-import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 public class DlgCapTaiKhoan extends javax.swing.JDialog {
 
@@ -23,7 +20,6 @@ public class DlgCapTaiKhoan extends javax.swing.JDialog {
         this.setIconImage(icon);
 
         txtMaNV.setText(maNV);
-        loadDataCmbQuyen();
     }
 
     @SuppressWarnings("unchecked")
@@ -151,7 +147,6 @@ public class DlgCapTaiKhoan extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private TaiKhoanBUS taiKhoanBUS = new TaiKhoanBUS();
-    private PhanQuyenBUS phanQuyenBUS = new PhanQuyenBUS();
 
     private void btnTaoTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoTaiKhoanActionPerformed
         taiKhoanBUS.themTaiKhoan(txtMaNV.getText(),
@@ -163,14 +158,6 @@ public class DlgCapTaiKhoan extends javax.swing.JDialog {
         btnTaoTaiKhoan.doClick();
     }//GEN-LAST:event_txtTenDangNhapActionPerformed
 
-    private void loadDataCmbQuyen() {
-        cmbQuyen.removeAllItems();
-        phanQuyenBUS.docDanhSachQuyen();
-        ArrayList<PhanQuyen> dsq = phanQuyenBUS.getListQuyen();
-        for (PhanQuyen pq : dsq) {
-            cmbQuyen.addItem(pq.getQuyen());
-        }
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTaoTaiKhoan;

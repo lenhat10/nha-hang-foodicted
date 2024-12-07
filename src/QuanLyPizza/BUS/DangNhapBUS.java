@@ -1,7 +1,6 @@
 package QuanLyPizza.BUS;
 
 import QuanLyPizza.DAO.DangNhapDAO;
-import QuanLyPizza.DTO.PhanQuyen;
 import QuanLyPizza.DTO.TaiKhoan;
 import MyCustom.MyDialog;
 
@@ -29,8 +28,6 @@ public class DangNhapBUS {
         if (account == null) {
             new MyDialog("Sai thông tin đăng nhập hoặc tài khoản đã bị khoá!", MyDialog.ERROR_DIALOG);
         } else {
-            PhanQuyenBUS phanQuyenBUS = new PhanQuyenBUS();
-            phanQuyenBUS.kiemTraQuyen(account.getQuyen());
             xuLyGhiNhoDangNhap(user, password, selected);
             new MyDialog("Đăng nhập thành công!", MyDialog.SUCCESS_DIALOG);
 //            new MyDialog("Vì tình hình dịch Covid phức tạp, cửa hàng chỉ thực hiện bán mang về!", MyDialog.INFO_DIALOG);

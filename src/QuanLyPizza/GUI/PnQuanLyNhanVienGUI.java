@@ -4,19 +4,16 @@ import MyCustom.XuLyFileExcel;
 import MyCustom.MyDialog;
 import MyCustom.TransparentPanel;
 import MyCustom.MyTable;
-import MyCustom.ImagePanel;
+
 import static Main.Main.changLNF;
 
 import QuanLyPizza.BUS.NhanVienBUS;
-import QuanLyPizza.BUS.PhanQuyenBUS;
 import QuanLyPizza.BUS.TaiKhoanBUS;
 import QuanLyPizza.DTO.NhanVien;
-import QuanLyPizza.DTO.PhanQuyen;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -34,10 +31,8 @@ public class PnQuanLyNhanVienGUI extends JPanel {
         changLNF("Windows");
         addControlsNhanVien();
         addEventsNhanVien();
-        addEventsPhanQuyen();
     }
 
-    private PhanQuyenBUS phanQuyenBUS = new PhanQuyenBUS();
     private NhanVienBUS nhanVienBUS = new NhanVienBUS();
 
     JLabel lblTabbedNhanVien, lblTabbedQuyen;
@@ -57,41 +52,7 @@ public class PnQuanLyNhanVienGUI extends JPanel {
         this.setBackground(colorPanel);
         int w = 1030;
         int h = 844;
-        /*
-        =========================================================================
-                                    PANEL TABBED
-        =========================================================================
-         */
-        JPanel pnTop = new TransparentPanel();
-        //<editor-fold defaultstate="collapsed" desc="Panel Tab Nhân viên & Quyền">
         Font font = new Font("", Font.PLAIN, 20);
-        pnTop.setPreferredSize(new Dimension(w, 41));
-        pnTop.setLayout(null);
-        pnTop.setBorder(BorderFactory.createMatteBorder(1, 0, 1, 0, Color.GRAY));
-
-        lblTabbedNhanVien = new JLabel("Nhân viên");
-        lblTabbedNhanVien.setHorizontalTextPosition(JLabel.CENTER);
-        lblTabbedNhanVien.setVerticalTextPosition(JLabel.CENTER);
-        lblTabbedNhanVien.setIcon(tabbedSelected);
-        lblTabbedNhanVien.setBounds(2, 2, 140, 37);
-        lblTabbedNhanVien.setFont(font);
-        lblTabbedNhanVien.setForeground(Color.white);
-        lblTabbedNhanVien.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-
-        lblTabbedQuyen = new JLabel("Quyền");
-        lblTabbedQuyen.setHorizontalTextPosition(JLabel.CENTER);
-        lblTabbedQuyen.setVerticalTextPosition(JLabel.CENTER);
-        lblTabbedQuyen.setIcon(tabbedDefault);
-        lblTabbedQuyen.setBounds(143, 2, 140, 37);
-        lblTabbedQuyen.setFont(font);
-        lblTabbedQuyen.setForeground(Color.white);
-        lblTabbedQuyen.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-
-        pnTop.add(lblTabbedNhanVien);
-        pnTop.add(lblTabbedQuyen);
-        //</editor-fold>
-        this.add(pnTop, BorderLayout.NORTH);
-
         /*
         =========================================================================
                                     PANEL NHÂN VIÊN
@@ -262,94 +223,12 @@ public class PnQuanLyNhanVienGUI extends JPanel {
         JScrollPane scrTblNhanVien = new JScrollPane(tblNhanVien);
         pnTableNhanVien.add(scrTblNhanVien, BorderLayout.CENTER);
         pnNhanVien.add(scrTblNhanVien);
-        /*
-        =========================================================================
-                                    PANEL QUYỀN
-        =========================================================================
-         */
-        JPanel pnPhanQuyen = new TransparentPanel();
-        pnPhanQuyen.setLayout(new BoxLayout(pnPhanQuyen, BoxLayout.Y_AXIS));
 
-        JPanel pnTitlePhanQuyen = new TransparentPanel();
-        JLabel lblTitlePhanQuyen = new JLabel("<html><h1>Quản lý phân quyền</h1></html>");
-        pnTitlePhanQuyen.add(lblTitlePhanQuyen);
-        pnPhanQuyen.add(pnTitlePhanQuyen);
-
-        JPanel pnCmbQuyen = new TransparentPanel();
-        JLabel lblCmbQuyen = new JLabel("<html><b>Nhóm quyền:</b></html>");
-        lblCmbQuyen.setFont(font);
-        cmbQuyen = new JComboBox<String>();
-        cmbQuyen.setFont(font);
-        pnCmbQuyen.add(lblCmbQuyen);
-        pnCmbQuyen.add(cmbQuyen);
-        pnPhanQuyen.add(pnCmbQuyen);
-
-        JPanel pnCheckNhapHang = new TransparentPanel();
-        ckbNhapHang = new JCheckBox("Quản lý nhập hàng.");
-        ckbNhapHang.setFont(font);
-        pnCheckNhapHang.add(ckbNhapHang);
-        pnPhanQuyen.add(pnCheckNhapHang);
-
-        JPanel pnCheckQLSanPham = new TransparentPanel();
-        ckbQLSanPham = new JCheckBox("Quản lý sản phẩm.");
-        ckbQLSanPham.setFont(font);
-        pnCheckQLSanPham.add(ckbQLSanPham);
-        pnPhanQuyen.add(pnCheckQLSanPham);
-
-        JPanel pnCheckQLNhanVien = new TransparentPanel();
-        ckbQLNhanVien = new JCheckBox("Quản lý nhân viên.");
-        ckbQLNhanVien.setFont(font);
-        pnCheckQLNhanVien.add(ckbQLNhanVien);
-        pnPhanQuyen.add(pnCheckQLNhanVien);
-
-        JPanel pnCheckQLKhachHang = new TransparentPanel();
-        ckbQLKhachHang = new JCheckBox("Quản lý khách hàng.");
-        ckbQLKhachHang.setFont(font);
-        pnCheckQLKhachHang.add(ckbQLKhachHang);
-        pnPhanQuyen.add(pnCheckQLKhachHang);
-
-        JPanel pnCheckQLThongKe = new TransparentPanel();
-        ckbThongKe = new JCheckBox("Quản lý thống kê.");
-        ckbThongKe.setFont(font);
-        pnCheckQLThongKe.add(ckbThongKe);
-        pnPhanQuyen.add(pnCheckQLThongKe);
-
-        Dimension ckbSize = ckbQLKhachHang.getPreferredSize();
-        cmbQuyen.setPreferredSize(ckbSize);
-        ckbNhapHang.setPreferredSize(ckbSize);
-        ckbQLSanPham.setPreferredSize(ckbSize);
-        ckbQLNhanVien.setPreferredSize(ckbSize);
-        ckbQLKhachHang.setPreferredSize(ckbSize);
-        ckbThongKe.setPreferredSize(ckbSize);
-
-        JPanel pnButtonQuyen = new TransparentPanel();
-        btnThemQuyen = new JButton("Thêm quyền");
-        btnSuaQuyen = new JButton("Sửa quyền");
-        btnXoaQuyen = new JButton("Xoá quyền");
-        btnThemQuyen.setFont(font);
-        btnSuaQuyen.setFont(font);
-        btnXoaQuyen.setFont(font);
-        btnThemQuyen.setIcon(new ImageIcon("image/add-icon.png"));
-        btnSuaQuyen.setIcon(new ImageIcon("image/Pencil-icon.png"));
-        btnXoaQuyen.setIcon(new ImageIcon("image/delete-icon.png"));
-        pnButtonQuyen.add(btnThemQuyen);
-        pnButtonQuyen.add(btnSuaQuyen);
-        pnButtonQuyen.add(btnXoaQuyen);
-        btnSuaQuyen.setPreferredSize(btnThemQuyen.getPreferredSize());
-        btnXoaQuyen.setPreferredSize(btnThemQuyen.getPreferredSize());
-        pnPhanQuyen.add(pnButtonQuyen);
-
-        JPanel pnImage = new ImagePanel("image/backgroundManagerment.jpg");
-        pnImage.setPreferredSize(new Dimension(w, 450));
-        pnPhanQuyen.add(pnImage);
-        //========================
         pnCardTabNhanVien = new JPanel(cardNhanVienGroup);
         pnCardTabNhanVien.add(pnNhanVien, "1");
-        pnCardTabNhanVien.add(pnPhanQuyen, "2");
         this.add(pnCardTabNhanVien);
 
         loadDataTblNhanVien();
-        loadDataCmbQuyen();
     }
 
     JComboBox<String> cmbQuyen;
@@ -357,55 +236,6 @@ public class PnQuanLyNhanVienGUI extends JPanel {
     JButton btnSuaQuyen, btnThemQuyen, btnXoaQuyen;
 
     private void addEventsNhanVien() {
-        lblTabbedNhanVien.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                lblTabbedNhanVien.setIcon(tabbedSelected);
-                lblTabbedQuyen.setIcon(tabbedDefault);
-                cardNhanVienGroup.show(pnCardTabNhanVien, "1");
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-            }
-        });
-
-        lblTabbedQuyen.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                lblTabbedQuyen.setIcon(tabbedSelected);
-                lblTabbedNhanVien.setIcon(tabbedDefault);
-                cardNhanVienGroup.show(pnCardTabNhanVien, "2");
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-            }
-        });
 
         tblNhanVien.addMouseListener(new MouseListener() {
             @Override
@@ -518,121 +348,7 @@ public class PnQuanLyNhanVienGUI extends JPanel {
         });
     }
 
-    private void addEventsPhanQuyen() {
-        cmbQuyen.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                xuLyHienThiChiTietQuyen();
-            }
-        });
-        btnThemQuyen.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                xuLyThemQuyen();
-            }
-        });
-        btnSuaQuyen.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                xuLySuaQuyen();
-            }
-        });
-        btnXoaQuyen.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                xuLyXoaQuyen();
-            }
-        });
-    }
 
-    private void xuLyXoaQuyen() {
-        if (cmbQuyen.getSelectedIndex() < 1) {
-            new MyDialog("Chưa chọn nhóm quyền để xoá!", MyDialog.ERROR_DIALOG);
-            return;
-        }
-        MyDialog dlg = new MyDialog("Bạn có chắc chắn muốn xoá?", MyDialog.WARNING_DIALOG);
-        if (dlg.getAction() == MyDialog.CANCEL_OPTION) {
-            return;
-        }
-        String tenQuyen = cmbQuyen.getSelectedItem() + "";
-        boolean flag = phanQuyenBUS.xoaQuyen(tenQuyen);
-        if (flag) {
-            loadDataCmbQuyen();
-        }
-    }
-
-    private void xuLyThemQuyen() {
-        String tenQuyen = JOptionPane.showInputDialog("Nhập tên quyền");
-
-        boolean flag = phanQuyenBUS.themQuyen(tenQuyen);
-        if (flag) {
-            loadDataCmbQuyen();
-        }
-    }
-
-    private void xuLySuaQuyen() {
-        if (cmbQuyen.getSelectedIndex() < 1) {
-            new MyDialog("Chưa chọn nhóm quyền để sửa!", MyDialog.ERROR_DIALOG);
-            return;
-        }
-        String tenQuyen = cmbQuyen.getSelectedItem() + "";
-        int nhapHang = ckbNhapHang.isSelected() ? 1 : 0;
-        int sanPham = ckbQLSanPham.isSelected() ? 1 : 0;
-        int nhanVien = ckbQLNhanVien.isSelected() ? 1 : 0;
-        int khachHang = ckbQLKhachHang.isSelected() ? 1 : 0;
-        int thongKe = ckbThongKe.isSelected() ? 1 : 0;
-
-        boolean flag = phanQuyenBUS.suaQuyen(tenQuyen, nhapHang, sanPham, nhanVien, khachHang, thongKe);
-        if (flag) {
-            loadDataCmbQuyen();
-        }
-    }
-
-    private void xuLyHienThiChiTietQuyen() {
-        ArrayList<PhanQuyen> dsq = phanQuyenBUS.getListQuyen();
-        PhanQuyen phanQuyen = new PhanQuyen();
-        for (PhanQuyen pq : dsq) {
-            if (pq.getQuyen().equals(cmbQuyen.getSelectedItem())) {
-                phanQuyen.setQuyen(pq.getQuyen());
-                phanQuyen.setNhapHang(pq.getNhapHang());
-                phanQuyen.setQlSanPham(pq.getQlSanPham());
-                phanQuyen.setQlNhanVien(pq.getQlNhanVien());
-                phanQuyen.setQlKhachHang(pq.getQlKhachHang());
-                phanQuyen.setThongKe(pq.getThongKe());
-                break;
-            }
-        }
-        ckbNhapHang.setSelected(false);
-        ckbQLSanPham.setSelected(false);
-        ckbQLNhanVien.setSelected(false);
-        ckbQLKhachHang.setSelected(false);
-        ckbThongKe.setSelected(false);
-        if (phanQuyen.getNhapHang() == 1) {
-            ckbNhapHang.setSelected(true);
-        }
-        if (phanQuyen.getQlSanPham() == 1) {
-            ckbQLSanPham.setSelected(true);
-        }
-        if (phanQuyen.getQlNhanVien() == 1) {
-            ckbQLNhanVien.setSelected(true);
-        }
-        if (phanQuyen.getQlKhachHang() == 1) {
-            ckbQLKhachHang.setSelected(true);
-        }
-        if (phanQuyen.getThongKe() == 1) {
-            ckbThongKe.setSelected(true);
-        }
-    }
-
-    private void loadDataCmbQuyen() {
-        phanQuyenBUS.docDanhSachQuyen();
-        ArrayList<PhanQuyen> dsq = phanQuyenBUS.getListQuyen();
-        cmbQuyen.removeAllItems();
-        cmbQuyen.addItem("Chọn quyền");
-        for (PhanQuyen pq : dsq) {
-            cmbQuyen.addItem(pq.getQuyen());
-        }
-    }
 
     private void xuLyResetMatKhau() {
         String maNV = txtMaNV.getText();

@@ -13,10 +13,6 @@ public class TaiKhoanBUS {
         return taiKhoanDAO.getTenDangNhapTheoMa(maNV);
     }
 
-    public String getQuyenTheoMa(String ma) {
-        int maNV = Integer.parseInt(ma);
-        return taiKhoanDAO.getQuyenTheoMa(maNV);
-    }
 
     public void datLaiMatKhau(String ma, String tenDangNhap) {
         int maNV = Integer.parseInt(ma);
@@ -28,15 +24,6 @@ public class TaiKhoanBUS {
         }
     }
 
-    public void datLaiQuyen(String ma, String quyen) {
-        int maNV = Integer.parseInt(ma);
-        boolean flag = taiKhoanDAO.datLaiQuyen(maNV, quyen);
-        if (flag) {
-            new MyDialog("Đặt lại thành công!", MyDialog.SUCCESS_DIALOG);
-        } else {
-            new MyDialog("Đặt lại thất bại!", MyDialog.ERROR_DIALOG);
-        }
-    }
 
     public boolean kiemTraTrungTenDangNhap(String tenDangNhap) {
         return taiKhoanDAO.kiemTraTrungTenDangNhap(tenDangNhap);

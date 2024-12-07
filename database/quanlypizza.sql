@@ -321,31 +321,6 @@ INSERT INTO `nhanvien` (`MaNV`, `Ho`, `Ten`, `GioiTinh`, `ChucVu`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `phanquyen`
---
-
-CREATE TABLE `phanquyen` (
-  `Quyen` varchar(255) NOT NULL,
-  `NhapHang` int(1) NOT NULL,
-  `QLSanPham` int(1) NOT NULL,
-  `QLNhanVien` int(1) NOT NULL,
-  `QLKhachHang` int(1) NOT NULL,
-  `ThongKe` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `phanquyen`
---
-
-INSERT INTO `phanquyen` (`Quyen`, `NhapHang`, `QLSanPham`, `QLNhanVien`, `QLKhachHang`, `ThongKe`) VALUES
-('Default', 0, 0, 0, 0, 0),
-('Nhân viên', 0, 0, 0, 1, 0),
-('Quản lý', 1, 0, 1, 1, 1),
-('Quản trị', 1, 1, 1, 1, 1);
-
--- --------------------------------------------------------
-
---
 -- Cấu trúc bảng cho bảng `phieunhap`
 --
 
@@ -420,7 +395,6 @@ CREATE TABLE `taikhoan` (
   `MaNV` int(11) NOT NULL,
   `TenDangNhap` varchar(255) NOT NULL,
   `MatKhau` varchar(255) NOT NULL,
-  `Quyen` varchar(255) NOT NULL,
   `TrangThai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -428,12 +402,12 @@ CREATE TABLE `taikhoan` (
 -- Đang đổ dữ liệu cho bảng `taikhoan`
 --
 
-INSERT INTO `taikhoan` (`MaNV`, `TenDangNhap`, `MatKhau`, `Quyen`, `TrangThai`) VALUES
-(0, 'admin', 'admin', 'Quản trị', 1),
-(1, 'ql01', 'ql01', 'Quản lý', 1),
-(2, 'ql02', 'ql02', 'Quản lý', 1),
-(3, 'ql03', 'ql03', 'Quản lý', 1),
-(4, 'nv01', 'nv01', 'Nhân viên', 1);
+INSERT INTO `taikhoan` (`MaNV`, `TenDangNhap`, `MatKhau`, `TrangThai`) VALUES
+(0, 'admin', 'admin', 1),
+(1, 'ql01', 'ql01', 1),
+(2, 'ql02', 'ql02', 1),
+(3, 'ql03', 'ql03', 1),
+(4, 'nv01', 'nv01', 1);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -491,12 +465,6 @@ ALTER TABLE `nhanvien`
   ADD PRIMARY KEY (`MaNV`);
 
 --
--- Chỉ mục cho bảng `phanquyen`
---
-ALTER TABLE `phanquyen`
-  ADD PRIMARY KEY (`Quyen`);
-
---
 -- Chỉ mục cho bảng `phieunhap`
 --
 ALTER TABLE `phieunhap`
@@ -515,8 +483,7 @@ ALTER TABLE `sanpham`
 -- Chỉ mục cho bảng `taikhoan`
 --
 ALTER TABLE `taikhoan`
-  ADD PRIMARY KEY (`MaNV`),
-  ADD KEY `taikhoan_ibfk_2` (`Quyen`);
+  ADD PRIMARY KEY (`MaNV`);
 
 --
 -- AUTO_INCREMENT cho các bảng đã đổ
@@ -616,9 +583,7 @@ ALTER TABLE `sanpham`
 -- Các ràng buộc cho bảng `taikhoan`
 --
 ALTER TABLE `taikhoan`
-  ADD CONSTRAINT `taikhoan_ibfk_1` FOREIGN KEY (`MaNV`) REFERENCES `nhanvien` (`MaNV`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `taikhoan_ibfk_2` FOREIGN KEY (`Quyen`) REFERENCES `phanquyen` (`Quyen`) ON DELETE CASCADE;
-COMMIT;
+  ADD CONSTRAINT `taikhoan_ibfk_1` FOREIGN KEY (`MaNV`) REFERENCES `nhanvien` (`MaNV`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

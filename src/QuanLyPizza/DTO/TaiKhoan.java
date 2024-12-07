@@ -5,7 +5,6 @@ public class TaiKhoan {
     private int maNhanVien;
     private String tenDangNhap;
     private String matKhau;
-    private String quyen;
 
     public TaiKhoan() {
     }
@@ -14,7 +13,6 @@ public class TaiKhoan {
         this.maNhanVien = maNhanVien;
         this.tenDangNhap = tenDangNhap;
         this.matKhau = matKhau;
-        this.quyen = quyen;
     }
 
     public int getMaNhanVien() {
@@ -41,11 +39,4 @@ public class TaiKhoan {
         this.matKhau = matKhau;
     }
 
-    public String getQuyen() {
-        return quyen;
-    }
-
-    public void setQuyen(String quyen) {
-        this.quyen = quyen;
-    }
 }

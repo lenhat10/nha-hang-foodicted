@@ -1,13 +1,10 @@
 package QuanLyPizza.GUI;
 
-import QuanLyPizza.BUS.PhanQuyenBUS;
+
 import QuanLyPizza.BUS.TaiKhoanBUS;
-import QuanLyPizza.DTO.PhanQuyen;
 import MyCustom.MyDialog;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.util.ArrayList;
-import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 public class DlgQuyen_MatKhau extends javax.swing.JDialog {
 
@@ -22,39 +19,9 @@ public class DlgQuyen_MatKhau extends javax.swing.JDialog {
         this.setModal(true);
         Image icon = Toolkit.getDefaultToolkit().getImage("image/ManagerUI/icon-app.png");
         this.setIconImage(icon);
-
-        loadDataCmbQuyen();
     }
-    private PhanQuyenBUS phanQuyenBUS = new PhanQuyenBUS();
     private TaiKhoanBUS taiKhoanBUS = new TaiKhoanBUS();
 
-    private void loadDataCmbQuyen() {
-        txtMatKhau_MaNV.setText(maNV);
-        txtQuyen_MaNV.setText(maNV);
-
-        String tenDangNhap = taiKhoanBUS.getTenDangNhapTheoMa(maNV);
-        if (tenDangNhap.equals("")) {
-            new MyDialog("Nhân viên này chưa có tài khoản!", MyDialog.ERROR_DIALOG);
-            btnCapMatKhau.setEnabled(false);
-            btnLuuQuyen.setEnabled(false);
-        }
-        txtMatKhau_TenDangNhap.setText(tenDangNhap);
-
-        cmbQuyen.removeAllItems();
-        phanQuyenBUS.docDanhSachQuyen();
-        ArrayList<PhanQuyen> dsq = phanQuyenBUS.getListQuyen();
-        for (PhanQuyen pq : dsq) {
-            cmbQuyen.addItem(pq.getQuyen());
-        }
-
-        String quyen = taiKhoanBUS.getQuyenTheoMa(maNV);
-        for (int i = 0; i < cmbQuyen.getItemCount(); i++) {
-            if (cmbQuyen.getItemAt(i).equals(quyen)) {
-                cmbQuyen.setSelectedIndex(i);
-                break;
-            }
-        }
-    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -170,13 +137,7 @@ public class DlgQuyen_MatKhau extends javax.swing.JDialog {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Quyền Tài Khoản");
 
-        btnLuuQuyen.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnLuuQuyen.setText("Lưu thay đổi");
-        btnLuuQuyen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLuuQuyenActionPerformed(evt);
-            }
-        });
+
         pnMatKhauButton2.add(btnLuuQuyen);
 
         cmbQuyen.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -237,9 +198,6 @@ public class DlgQuyen_MatKhau extends javax.swing.JDialog {
         taiKhoanBUS.datLaiMatKhau(maNV, txtMatKhau_TenDangNhap.getText());
     }//GEN-LAST:event_btnCapMatKhauActionPerformed
 
-    private void btnLuuQuyenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuQuyenActionPerformed
-        taiKhoanBUS.datLaiQuyen(maNV, cmbQuyen.getSelectedItem() + "");
-    }//GEN-LAST:event_btnLuuQuyenActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCapMatKhau;

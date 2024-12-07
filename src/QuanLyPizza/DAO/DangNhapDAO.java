@@ -19,7 +19,6 @@ public class DangNhapDAO {
             if (rs.next()) {
                 tkLogin = tk;
                 tkLogin.setMaNhanVien(rs.getInt("MaNV"));
-                tkLogin.setQuyen(rs.getString("Quyen"));
             }
             return tkLogin;
         } catch (SQLException e) {

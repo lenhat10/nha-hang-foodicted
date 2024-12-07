@@ -1,8 +1,5 @@
 package QuanLyPizza.GUI;
 
-import QuanLyPizza.BUS.PhanQuyenBUS;
-import QuanLyPizza.DTO.PhanQuyen;
-
 
 import java.awt.*;
 import java.awt.event.*;
@@ -161,35 +158,26 @@ public class MainQuanLyGUI extends JFrame {
         pnKhuyenMai.add(khuyenMaiPanel, BorderLayout.CENTER);
 
         //======XỬ LÝ PHÂN QUYỀN=======
-        PhanQuyen quyen = PhanQuyenBUS.quyenTK;
 
-        if (quyen.getNhapHang() == 1) {
-            nhapHangPanel = new PnQuanLyNhapHangGUI();
-            pnNhapHang.setLayout(new BorderLayout());
-            pnNhapHang.add(nhapHangPanel, BorderLayout.CENTER);
-            lblNhapHang.setVisible(true);
-        }
+        nhapHangPanel = new PnQuanLyNhapHangGUI();
+        pnNhapHang.setLayout(new BorderLayout());
+        pnNhapHang.add(nhapHangPanel, BorderLayout.CENTER);
+        lblNhapHang.setVisible(true);
 
-        if (quyen.getQlSanPham() == 1) {
-            sanPhamPanel = new PnQuanLySanPhamGUI();
-            pnSanPham.setLayout(new BorderLayout());
-            pnSanPham.add(sanPhamPanel, BorderLayout.CENTER);
-            lblSanPham.setVisible(true);
-        }
+        sanPhamPanel = new PnQuanLySanPhamGUI();
+        pnSanPham.setLayout(new BorderLayout());
+        pnSanPham.add(sanPhamPanel, BorderLayout.CENTER);
+        lblSanPham.setVisible(true);
 
-        if (quyen.getQlNhanVien() == 1) {
-            nhanVienPanel = new PnQuanLyNhanVienGUI();
-            pnNhanVien.setLayout(new BorderLayout());
-            pnNhanVien.add(nhanVienPanel, BorderLayout.CENTER);
-            lblNhanVien.setVisible(true);
-        }
+        nhanVienPanel = new PnQuanLyNhanVienGUI();
+        pnNhanVien.setLayout(new BorderLayout());
+        pnNhanVien.add(nhanVienPanel, BorderLayout.CENTER);
+        lblNhanVien.setVisible(true);
 
-        if (quyen.getQlKhachHang() == 1) {
-            khachHangPanel = new PnQuanLyKhachHangGUI();
-            pnKhachHang.setLayout(new BorderLayout());
-            pnKhachHang.add(khachHangPanel, BorderLayout.CENTER);
-            lblKhachHang.setVisible(true);
-        }
+        khachHangPanel = new PnQuanLyKhachHangGUI();
+        pnKhachHang.setLayout(new BorderLayout());
+        pnKhachHang.add(khachHangPanel, BorderLayout.CENTER);
+        lblKhachHang.setVisible(true);
 
 
         pnMain.add(pnCard);
