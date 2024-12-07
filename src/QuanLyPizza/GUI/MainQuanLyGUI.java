@@ -35,7 +35,6 @@ public class MainQuanLyGUI extends JFrame {
     PnQuanLySanPhamGUI sanPhamPanel;
     PnQuanLyNhanVienGUI nhanVienPanel;
     PnQuanLyKhachHangGUI khachHangPanel;
-    PnQuanLyThongKeGUI thongKePanel;
 
     JLabel btnClose, btnMinimize, lblBanHang, lblKhuyenMai, lblNhapHang, lblSanPham, lblNhanVien, lblKhachHang, lblThongKe;
     final Color clLeftItem = new Color(63, 74, 89);
@@ -192,16 +191,11 @@ public class MainQuanLyGUI extends JFrame {
             lblKhachHang.setVisible(true);
         }
 
-        if (quyen.getThongKe() == 1) {
-            thongKePanel = new PnQuanLyThongKeGUI();
-            pnThongKe.setLayout(new BorderLayout());
-            pnThongKe.add(thongKePanel, BorderLayout.CENTER);
-            lblThongKe.setVisible(true);
-        }
+
         pnMain.add(pnCard);
         /*
         ============================================================
-                                CARD PANEL           
+                                CARD PANEL
         ============================================================
          */
         con.add(pnMain);

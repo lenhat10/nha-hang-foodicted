@@ -4,7 +4,6 @@ import QuanLyPizza.DAO.MyConnect;
 import QuanLyPizza.GUI.DangNhapGUI;
 
 public class Main {
-// hellooo
     public static void main(String[] args) {
         new MyConnect();
 
