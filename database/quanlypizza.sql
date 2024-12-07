@@ -263,9 +263,9 @@ CREATE TABLE `loai` (
 --
 
 INSERT INTO `loai` (`MaLoai`, `TenLoai`) VALUES
-(1, 'Pizza'),
+(1, 'Món ăn'),
 (2, 'Nước uống'),
-(3, 'Nguyên liệu');
+(3, 'Món tráng miệng');
 
 -- --------------------------------------------------------
 
@@ -390,31 +390,25 @@ CREATE TABLE `sanpham` (
 --
 
 INSERT INTO `sanpham` (`MaSP`, `TenSP`, `MaLoai`, `SoLuong`, `DonViTinh`, `HinhAnh`, `DonGia`) VALUES
-(111, 'Pizza Hải Sản Pesto Xanh', 1, 31, 'Cái', 'pizza0.png', 169000),
-(112, 'Pizza Hải Sản Nhiệt Đới', 1, 39, 'Cái', 'pizza1.png', 129000),
-(113, 'Pizza Hải Sản Cocktail', 1, 34, 'Cái', 'pizza2.png', 119000),
-(114, 'Pizza Tôm Cocktail', 1, 36, 'Cái', 'pizza3.png', 159000),
-(115, 'Pizza Aloha', 1, 38, 'Cái', 'pizza4.png', 119000),
-(116, 'Pizza Thịt Xông Khói', 1, 39, 'Cái', 'pizza5.png', 130000),
-(117, 'Pizza Thịt Nguội', 1, 34, 'Cái', 'pizza6.png', 149000),
-(118, 'Pizza Gà Nướng 3 Vị', 1, 35, 'Cái', 'pizza7.png', 129000),
-(119, 'Pizza hải sản Pesto gấp đôi nhân', 1, 13, 'Cái', 'pizza8.jpg', 239000),
-(120, 'Pizza gấp đôi nhân phủ cơn lốc hải sản', 1, 37, 'Cái', 'pizza9.jpg', 239000),
-(121, 'Pizza gấp đôi nhân phủ hải sản xốt tiêu đen', 1, 41, 'Cái', 'pizza10.jpg', 229000),
-(122, 'Pizza bò nướng tiêu đen', 1, 43, 'Cái', 'pizza11.jpg', 249000),
-(123, 'Pizza cá ngừ thanh cua', 1, 33, 'Cái', 'pizza12.jpg', 269000),
-(124, 'Pepsi lon 330ml', 2, 150, 'Lon', 'douong0.jpeg', 19000),
-(125, 'Pepsi chai 1.5l', 2, 250, 'Chai', 'douong1.jpeg', 29000),
-(126, '7Up lon 330ml', 2, 150, 'Lon', 'douong2.jpeg', 19000),
-(127, '7Up chai 1.5l', 2, 110, 'Chai', 'douong3.jpeg', 29000),
-(128, 'Pepsi no calories 330ml', 2, 180, 'Lon', 'douong4.jpg', 19000),
-(129, 'Mirinda cam 330ml', 2, 100, 'Lon', 'douong5.jpg', 19000),
-(130, 'Mirinda kem soda 330ml', 2, 80, 'Lon', 'douong6.jpg', 19000),
-(131, 'Nước suối Aquafina', 2, 52, 'Chai', 'douong7.jpg', 10000),
-(132, 'Trà sữa trà đen', 2, 6, 'Ly', 'douong8.jpg', 25000),
-(135, 'Bột mì Meizan 500g', 3, 100, 'Gói', 'default.png', 10000),
-(136, 'Men nở Mauripan 50g*5', 3, 200, 'Hộp', 'default.png', 23000),
-(137, 'Dầu olive Olivoilà 250ml', 3, 80, 'Chai', 'default.png', 84500);
+(111, 'Tôm Cocktail', 1, 36, 'Cái', 'food1.png', 119000),
+(112, 'Mì Ý Sốt kem Rose', 1, 38, 'Cái', 'food2.png', 119000),
+(113, 'Tacos Ức Gà', 1, 39, 'Cái', 'food3.png', 50000),
+(114, 'Steak Wagyu King Beef', 1, 35, 'Cái', 'food4.png', 129000),
+(116, 'Teriyaki Steak', 1, 43, 'Cái', 'food5.png', 249000),
+(115, 'Pizza hải sản Pesto', 1, 13, 'Cái', 'food6.png', 239000),
+(117, 'Salad Jambon xông khói', 1, 33, 'Cái', 'food7.png', 169000),
+(118, 'Salad Hoa Quả Burrata', 1, 34, 'Cái', 'food8.png', 149000),
+(119, 'Gà nướng BBQ', 1, 35, 'Cái', 'food9.png', 229000),
+(120, 'Matcha Latte', 2, 150, 'Ly', 'douong0.png', 39000),
+(121, 'Soda Việt Quất', 2, 100, 'Ly', 'douong1.png', 25000),
+(122, 'Americano Đá', 2, 150, 'Ly', 'douong2.png', 29000),
+(123, 'Espresso Coffee', 2, 150, 'Ly', 'douong3.png', 29000),
+(124, 'Pepsi no calories', 2, 180, 'Lon', 'douong4.png', 19000),
+(125, 'Nước suối Lavie', 2, 200, 'Chai', 'douong5.png', 10000),
+(126, 'Rượu Vang đỏ Nam Phi', 2, 20, 'Chai', 'douong6.png', 125000),
+(127, 'Banana Pancake', 3, 30, 'Cái', 'dessert1.png', 35000),
+(128, 'Oreo Cheesecake', 3, 20, 'Cái', 'dessert2.png', 45000),
+(129, 'Croissant Hạnh nhân', 3, 40, 'Cái', 'dessert3.png', 55000);
 
 -- --------------------------------------------------------
 
