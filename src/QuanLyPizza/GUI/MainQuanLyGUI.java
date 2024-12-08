@@ -9,7 +9,7 @@ import javax.swing.*;
 public class MainQuanLyGUI extends JFrame {
 
     public MainQuanLyGUI() {
-        this.setTitle("Phần mềm quản lý cửa hàng pizza");
+        this.setTitle("Phần mềm quản lý cửa hàng foodicted");
         this.setSize(1280, 900);
         Image icon = Toolkit.getDefaultToolkit().getImage("image/ManagerUI/icon-app.png");
         this.setIconImage(icon);

@@ -37,11 +37,11 @@ public class PnQuanLyNhanVienGUI extends JPanel {
     final Color colorPanel = new Color(247, 247, 247);
     CardLayout cardNhanVienGroup = new CardLayout();
     JPanel pnCardTabNhanVien;
-    JTextField txtMaNV, txtHo, txtTen, txtChucVu, txtTimNV;
+    JTextField txtMaNV, txtHo, txtTen, txtChucVu;
     JComboBox<String> cmbGioiTinh;
     MyTable tblNhanVien;
     DefaultTableModel dtmNhanVien;
-    JButton btnReset, btnThemNV, btnSuaNV, btnXoaNV, btnTimNV, btnCapTaiKhoan;
+    JButton btnReset, btnThemNV, btnSuaNV, btnXoaNV, btnCapTaiKhoan;
 
     private void addControlsNhanVien() {
         this.setLayout(new BorderLayout());
@@ -140,43 +140,31 @@ public class PnQuanLyNhanVienGUI extends JPanel {
 
         //==========
         JPanel pnTimNV = new TransparentPanel();
-        JLabel lblTim = new JLabel("Từ khoá tìm");
-        lblTim.setFont(font);
-        txtTimNV = new JTextField(25);
-        txtTimNV.setFont(font);
-        pnTimNV.add(lblTim);
-        pnTimNV.add(txtTimNV);
         pnTopNV.add(pnTimNV);
-        lblTim.setPreferredSize(lblSize);
         //==========
         JPanel pnButton = new TransparentPanel();
 
         btnThemNV = new JButton("Thêm");
         btnSuaNV = new JButton("Lưu");
         btnXoaNV = new JButton("Xoá");
-        btnTimNV = new JButton("Tìm kiếm");
 
         Font fontButton = new Font("Tahoma", Font.PLAIN, 16);
         btnThemNV.setFont(fontButton);
         btnSuaNV.setFont(fontButton);
         btnXoaNV.setFont(fontButton);
-        btnTimNV.setFont(fontButton);
 
         btnThemNV.setIcon(new ImageIcon("image/add-icon.png"));
         btnSuaNV.setIcon(new ImageIcon("image/Pencil-icon.png"));
         btnXoaNV.setIcon(new ImageIcon("image/delete-icon.png"));
-        btnTimNV.setIcon(new ImageIcon("image/Search-icon.png"));
 
         pnButton.add(btnThemNV);
         pnButton.add(btnSuaNV);
         pnButton.add(btnXoaNV);
-        pnButton.add(btnTimNV);
 
-        Dimension btnSize = btnTimNV.getPreferredSize();
+        Dimension btnSize = btnThemNV.getPreferredSize();
         btnThemNV.setPreferredSize(btnSize);
         btnSuaNV.setPreferredSize(btnSize);
         btnXoaNV.setPreferredSize(btnSize);
-        btnTimNV.setPreferredSize(btnSize);
 
         JPanel pnButton2 = new TransparentPanel();
         btnCapTaiKhoan = new JButton("Cấp tài khoản");
@@ -238,20 +226,6 @@ public class PnQuanLyNhanVienGUI extends JPanel {
             }
         });
 
-        txtTimNV.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                xuLyTimKiemNhanVien();
-            }
-        });
-
-        btnTimNV.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                xuLyTimKiemNhanVien();
-            }
-        });
-
         btnThemNV.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -292,7 +266,6 @@ public class PnQuanLyNhanVienGUI extends JPanel {
                 txtHo.setText("");
                 txtTen.setText("");
                 txtChucVu.setText("");
-                txtTimNV.setText("");
                 cmbGioiTinh.setSelectedIndex(0);
             }
         });
@@ -352,20 +325,6 @@ public class PnQuanLyNhanVienGUI extends JPanel {
         if (nhanVienBUS.themNhanVien(ho, ten, gioiTinh, chucVu)) {
             nhanVienBUS.docDanhSach();
             loadDataTblNhanVien();
-        }
-    }
-
-    private void xuLyTimKiemNhanVien() {
-        ArrayList<NhanVien> dsnv = nhanVienBUS.timNhanVien(txtTimNV.getText());
-        dtmNhanVien.setRowCount(0);
-        for (NhanVien nv : dsnv) {
-            Vector vec = new Vector();
-            vec.add(nv.getMaNV());
-            vec.add(nv.getHo());
-            vec.add(nv.getTen());
-            vec.add(nv.getGioiTinh());
-            vec.add(nv.getChucVu());
-            dtmNhanVien.addRow(vec);
         }
     }
 

@@ -50,7 +50,6 @@ public class PnQuanLyBanHangGUI extends JPanel {
     JLabel btnThemVaoGio, lblAnhSP, btnXoaSPGioHang, btnXuatHoaDonSP;
 
     JTextField txtMaHD, txtNgayLap, txtMaKH, txtMaNV, txtTongTien, txtGhiChu, txtMaHDCT, txtMaSPCT, txtSoLuongCT, txtDonGiaCT, txtThanhTienCT;
-    JTextField txtMinSearch, txtMaxSearch, txtMinNgayLap, txtMaxNgayLap;
     JList<String> listHoaDon;
     MyTable tblCTHoaDon;
     DefaultTableModel dtmCTHoaDon;
@@ -389,10 +388,6 @@ public class PnQuanLyBanHangGUI extends JPanel {
         lblNgayLap = new JLabel("Ngày lập");
         lblTongTien = new JLabel("Tổng tiền");
         lblGhiChu = new JLabel("Ghi chú");
-        lblMinsearch = new JLabel("Giá từ:");
-        lblMaxSearch = new JLabel("đến:");
-        lblMinNgay = new JLabel("Ngày lập từ:");
-        lblMaxNgay = new JLabel("đến:");
 
         txtMaHD = new JTextField(10);
         txtMaKH = new JTextField(10);
@@ -400,10 +395,6 @@ public class PnQuanLyBanHangGUI extends JPanel {
         txtNgayLap = new JTextField(10);
         txtTongTien = new JTextField(10);
         txtGhiChu = new JTextField(10);
-        txtMinSearch = new JTextField(7);
-        txtMaxSearch = new JTextField(7);
-        txtMinNgayLap = new JTextField(7);
-        txtMaxNgayLap = new JTextField(7);
 
         JPanel pnTitleHoaDon = new TransparentPanel(new FlowLayout());
         JLabel lblTitleHoaDon = new JLabel("THÔNG TIN HOÁ ĐƠN");
@@ -457,25 +448,9 @@ public class PnQuanLyBanHangGUI extends JPanel {
         pnCTHoaDonLeft.add(pnGhiChu);
 
         JPanel pnSearchPrice = new TransparentPanel(new FlowLayout());
-        lblMinsearch.setFont(font);
-        lblMaxSearch.setFont(font);
-        txtMinSearch.setFont(font);
-        txtMaxSearch.setFont(font);
-        pnSearchPrice.add(lblMinsearch);
-        pnSearchPrice.add(txtMinSearch);
-        pnSearchPrice.add(lblMaxSearch);
-        pnSearchPrice.add(txtMaxSearch);
         pnCTHoaDonLeft.add(pnSearchPrice);
 
         JPanel pnSearchDate = new TransparentPanel(new FlowLayout());
-        lblMinNgay.setFont(font);
-        lblMaxNgay.setFont(font);
-        txtMinNgayLap.setFont(font);
-        txtMaxNgayLap.setFont(font);
-        pnSearchDate.add(lblMinNgay);
-        pnSearchDate.add(txtMinNgayLap);
-        pnSearchDate.add(lblMaxNgay);
-        pnSearchDate.add(txtMaxNgayLap);
         pnCTHoaDonLeft.add(pnSearchDate);
 
         Dimension lblHoaDonSize = lblTongTien.getPreferredSize();
@@ -485,7 +460,6 @@ public class PnQuanLyBanHangGUI extends JPanel {
         lblMaNV.setPreferredSize(lblHoaDonSize);
         lblTongTien.setPreferredSize(lblHoaDonSize);
         lblGhiChu.setPreferredSize(lblHoaDonSize);
-        lblMinsearch.setPreferredSize(lblMinNgay.getPreferredSize());
 
         txtMaHD.setEditable(false);
         txtMaKH.setEditable(false);
@@ -859,34 +833,6 @@ public class PnQuanLyBanHangGUI extends JPanel {
                 loadDataTblCTHoaDon();
             }
         });
-
-        txtMinSearch.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                txtMaxSearch.requestFocus();
-            }
-        });
-
-        txtMaxSearch.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                xuLyTimTheoKhoangGia();
-            }
-        });
-
-        txtMinNgayLap.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                txtMaxNgayLap.requestFocus();
-            }
-        });
-
-        txtMaxNgayLap.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                xuLyTimTheoKhoangNgay();
-            }
-        });
     }
 
     private void loadDataComboboxLoaiBanSP() {
@@ -1230,16 +1176,5 @@ public class PnQuanLyBanHangGUI extends JPanel {
         loadDataComboboxLoaiBanSP();
         cmbLoaiSPBanHang.setSelectedIndex(0);
         loadDataComboboxNhanVienBan();
-    }
-
-
-    private void xuLyTimTheoKhoangNgay() {
-        ArrayList<HoaDon> listHoaDon = hoaDonBUS.getListHoaDonTheoNgay(txtMinNgayLap.getText(), txtMaxNgayLap.getText());
-        addDataListHoaDon(listHoaDon);
-    }
-
-    private void xuLyTimTheoKhoangGia() {
-        ArrayList<HoaDon> listHoaDon = hoaDonBUS.getListHoaDonTheoGia(txtMinSearch.getText(), txtMaxSearch.getText());
-        addDataListHoaDon(listHoaDon);
     }
 }

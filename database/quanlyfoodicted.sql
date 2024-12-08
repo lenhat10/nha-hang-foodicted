@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `quanlypizza`
+-- Cơ sở dữ liệu: `quanlyfoodicted`
 --
 
 -- --------------------------------------------------------
@@ -136,65 +136,6 @@ INSERT INTO `cthoadon` (`MaHD`, `MaSP`, `SoLuong`, `DonGia`, `ThanhTien`) VALUES
 (59, 120, 1, 39000, 39000),
 (59, 121, 1, 25000, 25000);
 
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `ctphieunhap`
---
-
-CREATE TABLE `ctphieunhap` (
-  `MaPN` int(11) NOT NULL,
-  `MaSP` int(11) NOT NULL,
-  `SoLuong` int(11) NOT NULL,
-  `DonGia` int(11) NOT NULL,
-  `ThanhTien` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `ctphieunhap`
---
-
-INSERT INTO `ctphieunhap` (`MaPN`, `MaSP`, `SoLuong`, `DonGia`, `ThanhTien`) VALUES
-(4, 128, 100, 10000, 1000000),
-(4, 129, 3, 9000, 27000),
-(5, 124, 6, 10000, 60000),
-(5, 125, 3, 15000, 45000),
-(5, 126, 7, 10000, 70000),
-(5, 127, 2, 15000, 30000),
-(5, 130, 3, 9000, 27000),
-(5, 131, 9, 4000, 36000),
-(7, 126, 9, 10000, 90000),
-(8, 124, 30, 10000, 300000),
-(8, 126, 50, 10000, 500000),
-(8, 129, 30, 9000, 270000),
-(9, 135, 100, 10000, 1000000),
-(10, 136, 200, 23000, 4600000),
-(10, 137, 80, 84500, 6760000);
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `giamgia`
---
-
-CREATE TABLE `giamgia` (
-  `MaGiam` int(11) NOT NULL,
-  `TenGiamGia` text NOT NULL,
-  `PhanTramGiam` int(11) NOT NULL,
-  `DieuKien` int(11) NOT NULL,
-  `NgayBD` date NOT NULL,
-  `NgayKT` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `giamgia`
---
-
-INSERT INTO `giamgia` (`MaGiam`, `TenGiamGia`, `PhanTramGiam`, `DieuKien`, `NgayBD`, `NgayKT`) VALUES
-(1, 'Không giảm giá', 0, 0, '2020-01-01', '2042-12-31'),
-(2, 'Giảm 20% đơn hàng từ 150.000đ', 20, 150000, '2021-04-22', '2021-05-13'),
-(4, 'Giảm 10% đơn hàng từ 80.000đ', 10, 80000, '2021-03-26', '2021-05-31'),
-(6, '30/04-01/05 giảm 30% đơn hàng từ 300.000đ', 30, 300000, '2021-04-20', '2021-05-08');
 
 -- --------------------------------------------------------
 
@@ -304,27 +245,6 @@ INSERT INTO `loai` (`MaLoai`, `TenLoai`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `nhacungcap`
---
-
-CREATE TABLE `nhacungcap` (
-  `MaNCC` int(11) NOT NULL,
-  `TenNCC` varchar(255) NOT NULL,
-  `DiaChi` varchar(255) NOT NULL,
-  `DienThoai` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `nhacungcap`
---
-
-INSERT INTO `nhacungcap` (`MaNCC`, `TenNCC`, `DiaChi`, `DienThoai`) VALUES
-(1, 'Bột mì Khánh Toàn', '273 An Dương Vương, phường 3, quận 5, TP.HCM', '0396527908'),
-(2, 'Công ty giải khát Pepsi', '12/49/2 Võ Văn Kiệt, P. Cô Giang, Q1', '0902669733'),
-(5, 'Nguyên liệu bánh Mochi Mochi', '492 Xô Viết Nghệ Tĩnh, P.25, Q. Bình Thạnh', '0397682193');
-
-
---
 -- Cấu trúc bảng cho bảng `nhanvien`
 --
 
@@ -351,31 +271,6 @@ INSERT INTO `nhanvien` (`MaNV`, `Ho`, `Ten`, `GioiTinh`, `ChucVu`) VALUES
 (14, 'Hà Văn', 'Hùng', 'Nam', 'Nhân Viên'),
 (15, 'Lê Thị Thuý', 'Diễm', 'Nữ', 'Quản Lý');
 
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `phieunhap`
---
-
-CREATE TABLE `phieunhap` (
-  `MaPN` int(11) NOT NULL,
-  `MaNCC` int(11) NOT NULL,
-  `MaNV` int(11) NOT NULL,
-  `NgayLap` date NOT NULL,
-  `TongTien` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `phieunhap`
---
-
-INSERT INTO `phieunhap` (`MaPN`, `MaNCC`, `MaNV`, `NgayLap`, `TongTien`) VALUES
-(4, 2, 0, '2021-04-19', 1027000),
-(5, 2, 0, '2021-04-23', 268000),
-(7, 2, 0, '2021-04-26', 90000),
-(8, 2, 0, '2021-05-02', 1070000),
-(9, 1, 0, '2021-05-04', 1000000),
-(10, 5, 0, '2021-05-07', 11360000);
 
 -- --------------------------------------------------------
 
@@ -436,15 +331,8 @@ CREATE TABLE `taikhoan` (
 --
 
 INSERT INTO `taikhoan` (`MaNV`, `TenDangNhap`, `MatKhau`, `TrangThai`) VALUES
-(0, 'admin', 'admin', 1),
-(1, 'ql01', 'ql01', 1),
-(2, 'ql02', 'ql02', 1),
-(3, 'ql03', 'ql03', 1),
-(4, 'nv01', 'nv01', 1);
+(0, 'admin', 'admin', 1);
 
---
--- Chỉ mục cho các bảng đã đổ
---
 
 --
 -- Chỉ mục cho bảng `cthoadon`
@@ -452,18 +340,6 @@ INSERT INTO `taikhoan` (`MaNV`, `TenDangNhap`, `MatKhau`, `TrangThai`) VALUES
 ALTER TABLE `cthoadon`
   ADD PRIMARY KEY (`MaHD`,`MaSP`),
   ADD KEY `cthoadon_ibfk_1` (`MaHD`);
-
---
--- Chỉ mục cho bảng `ctphieunhap`
---
-ALTER TABLE `ctphieunhap`
-  ADD PRIMARY KEY (`MaPN`,`MaSP`);
-
---
--- Chỉ mục cho bảng `giamgia`
---
-ALTER TABLE `giamgia`
-  ADD PRIMARY KEY (`MaGiam`);
 
 --
 -- Chỉ mục cho bảng `hoadon`
@@ -486,24 +362,10 @@ ALTER TABLE `loai`
   ADD PRIMARY KEY (`MaLoai`);
 
 --
--- Chỉ mục cho bảng `nhacungcap`
---
-ALTER TABLE `nhacungcap`
-  ADD PRIMARY KEY (`MaNCC`);
-
---
 -- Chỉ mục cho bảng `nhanvien`
 --
 ALTER TABLE `nhanvien`
   ADD PRIMARY KEY (`MaNV`);
-
---
--- Chỉ mục cho bảng `phieunhap`
---
-ALTER TABLE `phieunhap`
-  ADD PRIMARY KEY (`MaPN`),
-  ADD KEY `phieunhap_ibfk_1` (`MaNCC`),
-  ADD KEY `phieunhap_ibfk_2` (`MaNV`);
 
 --
 -- Chỉ mục cho bảng `sanpham`
@@ -522,11 +384,6 @@ ALTER TABLE `taikhoan`
 -- AUTO_INCREMENT cho các bảng đã đổ
 --
 
---
--- AUTO_INCREMENT cho bảng `giamgia`
---
-ALTER TABLE `giamgia`
-  MODIFY `MaGiam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `hoadon`
@@ -546,11 +403,6 @@ ALTER TABLE `khachhang`
 ALTER TABLE `loai`
   MODIFY `MaLoai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
---
--- AUTO_INCREMENT cho bảng `nhacungcap`
---
-ALTER TABLE `nhacungcap`
-  MODIFY `MaNCC` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `nhanvien`
@@ -558,11 +410,6 @@ ALTER TABLE `nhacungcap`
 ALTER TABLE `nhanvien`
   MODIFY `MaNV` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
---
--- AUTO_INCREMENT cho bảng `phieunhap`
---
-ALTER TABLE `phieunhap`
-  MODIFY `MaPN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `sanpham`
@@ -576,9 +423,6 @@ ALTER TABLE `sanpham`
 ALTER TABLE `taikhoan`
   MODIFY `MaNV` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
---
--- Các ràng buộc cho các bảng đã đổ
---
 
 --
 -- Các ràng buộc cho bảng `cthoadon`
@@ -587,24 +431,11 @@ ALTER TABLE `cthoadon`
   ADD CONSTRAINT `cthoadon_ibfk_1` FOREIGN KEY (`MaHD`) REFERENCES `hoadon` (`MaHD`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `ctphieunhap`
---
-ALTER TABLE `ctphieunhap`
-  ADD CONSTRAINT `ctphieunhap_ibfk_2` FOREIGN KEY (`MaPN`) REFERENCES `phieunhap` (`MaPN`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Các ràng buộc cho bảng `hoadon`
 --
 ALTER TABLE `hoadon`
   ADD CONSTRAINT `hoadon_ibfk_1` FOREIGN KEY (`MaNV`) REFERENCES `nhanvien` (`MaNV`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `hoadon_ibfk_2` FOREIGN KEY (`MaKH`) REFERENCES `khachhang` (`MaKH`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Các ràng buộc cho bảng `phieunhap`
---
-ALTER TABLE `phieunhap`
-  ADD CONSTRAINT `phieunhap_ibfk_1` FOREIGN KEY (`MaNCC`) REFERENCES `nhacungcap` (`MaNCC`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `phieunhap_ibfk_2` FOREIGN KEY (`MaNV`) REFERENCES `nhanvien` (`MaNV`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `sanpham`

@@ -11,8 +11,8 @@ public class TaiKhoanDAO {
 
     public boolean themTaiKhoan(int maNV, String tenDangNhap) {
         try {
-            String sql = "INSERT INTO taikhoan(MaNV, TenDangNhap, MatKhau, Quyen) "
-                    + "VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO taikhoan(MaNV, TenDangNhap, MatKhau) "
+                    + "VALUES (?, ?, ?)";
             PreparedStatement pre = MyConnect.conn.prepareStatement(sql);
             pre.setInt(1, maNV);
             pre.setString(2, tenDangNhap);
@@ -58,31 +58,6 @@ public class TaiKhoanDAO {
         } catch (Exception e) {
         }
         return false;
-    }
-
-    public boolean datLaiQuyen(int maNV, String quyen) {
-        try {
-            String sql = "UPDATE TaiKhoan SET Quyen=? WHERE MaNV=?";
-            PreparedStatement pre = MyConnect.conn.prepareStatement(sql);
-            pre.setString(1, quyen);
-            pre.setInt(2, maNV);
-            return pre.executeUpdate() > 0;
-        } catch (Exception e) {
-        }
-        return false;
-    }
-
-    public String getQuyenTheoMa(int maNV) {
-        try {
-            String sql = "SELECT Quyen FROM TaiKhoan WHERE MaNV=" + maNV;
-            Statement st = MyConnect.conn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            if (rs.next()) {
-                return rs.getString(1);
-            }
-        } catch (Exception e) {
-        }
-        return "";
     }
 
     public boolean khoaTaiKhoan(int maNV) {
