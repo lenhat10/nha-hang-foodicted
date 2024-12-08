@@ -1178,5 +1178,7 @@ public class PnQuanLyBanHangGUI extends JPanel {
         loadDataComboboxLoaiBanSP();
         cmbLoaiSPBanHang.setSelectedIndex(0);
         loadDataComboboxNhanVienBan();
+        spBUS.docListSanPham();
+        loadDataTableSanPhamBan();
     }
 }
