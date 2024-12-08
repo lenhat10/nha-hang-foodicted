@@ -7,7 +7,6 @@ import QuanLyPizza.DTO.SanPham;
 
 import static Main.Main.changLNF;
 
-import MyCustom.XuLyFileExcel;
 import MyCustom.MyDialog;
 import MyCustom.MyFileChooser;
 import MyCustom.MyTable;
@@ -53,9 +52,9 @@ public class PnQuanLySanPhamGUI extends JPanel {
     final Color colorPanel = new Color(247, 247, 247);
     MyTable tblSanPham;
     DefaultTableModel dtmSanPham;
-    JTextField txtMa, txtTen, txtsoLuong, txtdonViTinh, txtdonGia, txtTimKiem;
+    JTextField txtMa, txtTen, txtsoLuong, txtdonViTinh, txtdonGia;
     JComboBox<String> cmbLoai;
-    JButton btnThem, btnSua, btnXoa, btnTim, btnChonAnh, btnReset;
+    JButton btnThem, btnSua, btnXoa, btnChonAnh, btnReset;
     JLabel lblAnhSP;
 
     private void addControlsSanPham() {
@@ -182,38 +181,24 @@ public class PnQuanLySanPhamGUI extends JPanel {
         btnThem = new JButton("Thêm");
         btnSua = new JButton("Lưu");
         btnXoa = new JButton("Xoá");
-        btnTim = new JButton("Tìm kiếm");
 
         Font fontButton = new Font("Tahoma", Font.PLAIN, 16);
         btnThem.setFont(fontButton);
         btnSua.setFont(fontButton);
         btnXoa.setFont(fontButton);
-        btnTim.setFont(fontButton);
 
         btnThem.setIcon(new ImageIcon("image/add-icon.png"));
         btnSua.setIcon(new ImageIcon("image/Pencil-icon.png"));
         btnXoa.setIcon(new ImageIcon("image/delete-icon.png"));
-        btnTim.setIcon(new ImageIcon("image/Search-icon.png"));
-
-        JPanel pnTimKiem = new TransparentPanel();
-        JLabel lblTimKiem = new JLabel("Từ khoá tìm");
-        lblTimKiem.setFont(font);
-        txtTimKiem = new JTextField(20);
-        txtTimKiem.setFont(font);
-        pnTimKiem.add(lblTimKiem);
-        pnTimKiem.add(txtTimKiem);
-        this.add(pnTimKiem);
 
         pnButton.add(btnThem);
         pnButton.add(btnSua);
         pnButton.add(btnXoa);
-        pnButton.add(btnTim);
 
-        Dimension btnSize = btnTim.getPreferredSize();
+        Dimension btnSize = btnThem.getPreferredSize();
         btnThem.setPreferredSize(btnSize);
         btnSua.setPreferredSize(btnSize);
         btnXoa.setPreferredSize(btnSize);
-        btnTim.setPreferredSize(btnSize);
 
         this.add(pnButton);
 
@@ -326,48 +311,8 @@ public class PnQuanLySanPhamGUI extends JPanel {
                 xuLyChonAnh();
             }
         });
-
-        btnTim.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                xuLyTimKiem();
-            }
-        });
-
-        txtTimKiem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                xuLyTimKiem();
-            }
-        });
     }
 
-    private void xuLyNhapFileExcel() {
-        MyDialog dlg = new MyDialog("Dữ liệu cũ sẽ bị xoá, tiếp tục?", MyDialog.WARNING_DIALOG);
-        if (dlg.getAction() != MyDialog.OK_OPTION) {
-            return;
-        }
-
-        XuLyFileExcel nhapFile = new XuLyFileExcel();
-        nhapFile.nhapExcel(tblSanPham);
-
-        int row = tblSanPham.getRowCount();
-        for (int i = 0; i < row; i++) {
-            String ten = tblSanPham.getValueAt(i, 1) + "";
-            String loai = tblSanPham.getValueAt(i, 2) + "";
-            String donGia = tblSanPham.getValueAt(i, 3) + "";
-            String soLuong = tblSanPham.getValueAt(i, 4) + "";
-            String donViTinh = tblSanPham.getValueAt(i, 5) + "";
-            String anh = tblSanPham.getValueAt(i, 6) + "";
-
-            spBUS.nhapSanPhamTuExcel(ten, loai, soLuong, donViTinh, anh, donGia);
-        }
-    }
-
-    private void xuLyXuatFileExcel() {
-        XuLyFileExcel xuatFile = new XuLyFileExcel();
-        xuatFile.xuatExcel(tblSanPham);
-    }
 
     private void loadAnh(String anh) {
         lblAnhSP.setIcon(getAnhSP(anh));
@@ -534,26 +479,5 @@ public class PnQuanLySanPhamGUI extends JPanel {
         }
 
         return null;
-    }
-
-    private void xuLyTimKiem() {
-        String ten = txtTimKiem.getText().toLowerCase();
-        dtmSanPham.setRowCount(0);
-        ArrayList<SanPham> dssp = null;
-        dssp = spBUS.getSanPhamTheoTen(ten);
-        DecimalFormat dcf = new DecimalFormat("###,###");
-        for (SanPham sp : dssp) {
-            Vector vec = new Vector();
-            vec.add(sp.getMaSP());
-            vec.add(sp.getTenSP());
-            String tenLoai = loaiBUS.getTenLoai(sp.getMaLoai());
-            vec.add(tenLoai);
-            vec.add(dcf.format(sp.getDonGia()));
-            vec.add(dcf.format(sp.getSoLuong()));
-            vec.add(sp.getDonViTinh());
-            vec.add(sp.getHinhAnh());
-            dtmSanPham.addRow(vec);
-        }
-        MyDialog dlg = new MyDialog("Số kết quả tìm được: " + dssp.size(), MyDialog.INFO_DIALOG);
     }
 }

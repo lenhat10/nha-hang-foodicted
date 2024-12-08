@@ -71,7 +71,7 @@ public class DangNhapGUI extends JFrame {
         txtUser.setForeground(Color.WHITE);
         txtUser.setFont(fontTXT);
         txtUser.setHorizontalAlignment(JTextField.LEFT);
-        txtUser.setBounds(36, 302, 370, 50);
+        txtUser.setBounds(36, 292, 370, 50);
 
         txtPassword = new JPasswordField();
         txtPassword.setEchoChar('•');
@@ -80,7 +80,7 @@ public class DangNhapGUI extends JFrame {
         txtPassword.setForeground(Color.WHITE);
         txtPassword.setFont(fontTXT);
         txtPassword.setHorizontalAlignment(JTextField.LEFT);
-        txtPassword.setBounds(36, 401, 370, 50);
+        txtPassword.setBounds(36, 385, 370, 50);
 
         Main.changLNF("Windows");
         ckbRemember = new JCheckBox("Ghi nhớ đăng nhập");

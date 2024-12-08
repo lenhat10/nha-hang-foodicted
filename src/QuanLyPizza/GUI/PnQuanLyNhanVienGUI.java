@@ -1,6 +1,5 @@
 package QuanLyPizza.GUI;
 
-import MyCustom.XuLyFileExcel;
 import MyCustom.MyDialog;
 import MyCustom.TransparentPanel;
 import MyCustom.MyTable;
@@ -42,7 +41,7 @@ public class PnQuanLyNhanVienGUI extends JPanel {
     JComboBox<String> cmbGioiTinh;
     MyTable tblNhanVien;
     DefaultTableModel dtmNhanVien;
-    JButton btnReset, btnThemNV, btnSuaNV, btnXoaNV, btnTimNV, btnCapTaiKhoan, btnResetMatKhau;
+    JButton btnReset, btnThemNV, btnSuaNV, btnXoaNV, btnTimNV, btnCapTaiKhoan;
 
     private void addControlsNhanVien() {
         this.setLayout(new BorderLayout());
@@ -181,13 +180,9 @@ public class PnQuanLyNhanVienGUI extends JPanel {
 
         JPanel pnButton2 = new TransparentPanel();
         btnCapTaiKhoan = new JButton("Cấp tài khoản");
-        btnResetMatKhau = new JButton("Mật khẩu");
         btnCapTaiKhoan.setIcon(new ImageIcon("image/icons8_man_with_key_32px.png"));
-        btnResetMatKhau.setIcon(new ImageIcon("image/icons8_password_reset_32px.png"));
         btnCapTaiKhoan.setFont(fontButton);
-        btnResetMatKhau.setFont(fontButton);
         pnButton2.add(btnCapTaiKhoan);
-        pnButton2.add(btnResetMatKhau);
 
         pnNhanVien.add(pnTopNV);
         pnNhanVien.add(pnButton);
@@ -288,12 +283,6 @@ public class PnQuanLyNhanVienGUI extends JPanel {
             }
         });
 
-        btnResetMatKhau.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                xuLyResetMatKhau();
-            }
-        });
 
         btnReset.addActionListener(new ActionListener() {
             @Override
@@ -309,17 +298,6 @@ public class PnQuanLyNhanVienGUI extends JPanel {
         });
     }
 
-
-
-    private void xuLyResetMatKhau() {
-        String maNV = txtMaNV.getText();
-        if (maNV.trim().equals("")) {
-            new MyDialog("Hãy chọn nhân viên!", MyDialog.ERROR_DIALOG);
-            return;
-        }
-        DlgMatKhau dialog = new DlgMatKhau(maNV);
-        dialog.setVisible(true);
-    }
 
     private void xuLyCapTaiKhoan() {
         if (txtMaNV.getText().trim().equals("")) {
@@ -422,7 +400,5 @@ public class PnQuanLyNhanVienGUI extends JPanel {
             dtmNhanVien.addRow(vec);
         }
     }
-
-    TaiKhoanBUS taiKhoanBUS = new TaiKhoanBUS();
 
 }
