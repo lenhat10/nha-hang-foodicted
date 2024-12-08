@@ -35,8 +35,6 @@ public class DlgCapTaiKhoan extends javax.swing.JDialog {
         txtMaNV = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtTenDangNhap = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        cmbQuyen = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         btnTaoTaiKhoan = new javax.swing.JButton();
 
@@ -75,11 +73,6 @@ public class DlgCapTaiKhoan extends javax.swing.JDialog {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel5.setText("Quyền");
-
-        cmbQuyen.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
         javax.swing.GroupLayout pnInfoLayout = new javax.swing.GroupLayout(pnInfo);
         pnInfo.setLayout(pnInfoLayout);
         pnInfoLayout.setHorizontalGroup(
@@ -88,13 +81,11 @@ public class DlgCapTaiKhoan extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(pnInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(pnInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtMaNV)
-                    .addComponent(txtTenDangNhap, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-                    .addComponent(cmbQuyen, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtTenDangNhap, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pnInfoLayout.setVerticalGroup(
@@ -109,9 +100,6 @@ public class DlgCapTaiKhoan extends javax.swing.JDialog {
                     .addComponent(jLabel4)
                     .addComponent(txtTenDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(cmbQuyen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -160,11 +148,9 @@ public class DlgCapTaiKhoan extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTaoTaiKhoan;
-    private javax.swing.JComboBox<String> cmbQuyen;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblTitle;

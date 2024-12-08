@@ -260,16 +260,13 @@ CREATE TABLE `nhanvien` (
 -- Đang đổ dữ liệu cho bảng `nhanvien`
 --
 
-INSERT INTO `nhanvien` (`MaNV`, `Ho`, `Ten`, `GioiTinh`, `ChucVu`) VALUES
-(0, 'Admin', '', '', 'Admin'),
-(1, 'Sau Đại', 'Phát', 'Nam', 'Quản Lý'),
-(2, 'Trần Quang', 'Vinh', 'Nam', 'Quản Lý'),
-(3, 'Trần Hữu', 'Khương', 'Nam', 'Quản Lý'),
-(4, 'Nhữ Quốc Anh', 'Tài', 'Nam', 'Nhân Viên'),
-(12, 'Trịnh Thu', 'Huyền', 'Nữ', 'Nhân Viên'),
-(13, 'Nguyễn Ngọc Mai', 'Linh', 'Nữ', 'Nhân Viên'),
-(14, 'Hà Văn', 'Hùng', 'Nam', 'Nhân Viên'),
-(15, 'Lê Thị Thuý', 'Diễm', 'Nữ', 'Quản Lý');
+INSERT INTO nhanvien (MaNV, Ho, Ten, GioiTinh, ChucVu) VALUES
+(1, 'Trần Lê', 'Nhật', 'Nữ', 'Quản lý 1'),
+(2, 'Lê Nữ Trà', 'Mi', 'Nữ', 'Quản lý 2'),
+(3, 'Phan Công', 'Anh', 'Nam', 'Đầu bếp + Lao công'),
+(4, 'Trương Bình', 'Nhi', 'Nữ', 'Quản lý 3'),
+(5, 'Trần Hoàng Kim', 'Uyên', 'Nữ', 'Quản lý 4'),
+(6, 'Lê Vĩ', 'Kỳ', 'Nữ', 'Quản lý 5');
 
 
 -- --------------------------------------------------------
@@ -331,7 +328,7 @@ CREATE TABLE `taikhoan` (
 --
 
 INSERT INTO `taikhoan` (`MaNV`, `TenDangNhap`, `MatKhau`, `TrangThai`) VALUES
-(0, 'admin', 'admin', 1);
+(3, 'admin', 'admin', 1);
 
 
 --
