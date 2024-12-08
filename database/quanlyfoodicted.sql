@@ -194,7 +194,7 @@ CREATE TABLE `khachhang` (
 --
 
 INSERT INTO `khachhang` (`MaKH`, `Ho`, `Ten`, `GioiTinh`, `TongChiTieu`, `TinhTrang`) VALUES
-(1, 'Nguyễn Thiên', 'Bảo', 'Nam', 593000, 1),
+(1, 'Đặng Đỗ Anh', 'Thư', 'Nữ', 593000, 1),
 (2, 'Trần Ngọc', 'Linh', 'Nữ', 1085000, 1),
 (15, 'Lê Thị Yến', 'Như', 'Nữ', 1468800, 1),
 (16, 'Trương Bình', 'Nhi', 'Nữ', 723000, 1),
