@@ -156,9 +156,11 @@ public class PnQuanLyBanHangGUI extends JPanel {
         //<editor-fold defaultstate="collapsed" desc="Bảng giỏ hàng">
         pnTableGioHang.setLayout(new BorderLayout());
 
+        JPanel pnTitleGioHang = new TransparentPanel();
         JLabel lblTitleGioHang = new JLabel("Giỏ hàng");
         lblTitleGioHang.setFont(new Font("Arial", Font.BOLD, 28));
-        pnTableGioHang.add(lblTitleGioHang, BorderLayout.NORTH);
+        pnTitleGioHang.add(lblTitleGioHang);
+        pnTableGioHang.add(pnTitleGioHang, BorderLayout.NORTH);
 
         dtmGioHang = new DefaultTableModel();
         dtmGioHang.addColumn("Mã SP");
@@ -852,7 +854,7 @@ public class PnQuanLyBanHangGUI extends JPanel {
         ArrayList<NhanVien> dsnv = nvBUS.getDanhSachNhanVien();
         if (dsnv != null) {
             for (NhanVien nv : dsnv) {
-                cmbNhanVienBan.addItem(nv.getMaNV() + " - " + nv.getHo() + " " + nv.getTen());
+                cmbNhanVienBan.addItem(nv.getMaNV() + " - " + nv.getHo() + " " + nv.getTen() + " (" + nv.getChucVu() + ")");
             }
         }
 
