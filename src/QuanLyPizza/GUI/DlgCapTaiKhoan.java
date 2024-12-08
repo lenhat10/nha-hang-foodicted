@@ -150,8 +150,7 @@ public class DlgCapTaiKhoan extends javax.swing.JDialog {
 
     private void btnTaoTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoTaiKhoanActionPerformed
         taiKhoanBUS.themTaiKhoan(txtMaNV.getText(),
-                txtTenDangNhap.getText(),
-                (String) cmbQuyen.getSelectedItem());
+                txtTenDangNhap.getText());
     }//GEN-LAST:event_btnTaoTaiKhoanActionPerformed
 
     private void txtTenDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenDangNhapActionPerformed

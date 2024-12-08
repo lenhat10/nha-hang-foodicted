@@ -35,9 +35,6 @@ public class PnQuanLyNhanVienGUI extends JPanel {
 
     private NhanVienBUS nhanVienBUS = new NhanVienBUS();
 
-    JLabel lblTabbedNhanVien, lblTabbedQuyen;
-    final ImageIcon tabbedSelected = new ImageIcon("image/ManagerUI/tabbed-btn--selected.png");
-    final ImageIcon tabbedDefault = new ImageIcon("image/ManagerUI/tabbed-btn.png");
     final Color colorPanel = new Color(247, 247, 247);
     CardLayout cardNhanVienGroup = new CardLayout();
     JPanel pnCardTabNhanVien;
@@ -45,7 +42,7 @@ public class PnQuanLyNhanVienGUI extends JPanel {
     JComboBox<String> cmbGioiTinh;
     MyTable tblNhanVien;
     DefaultTableModel dtmNhanVien;
-    JButton btnReset, btnThemNV, btnSuaNV, btnXoaNV, btnTimNV, btnCapTaiKhoan, btnResetMatKhau, btnXoaTaiKhoan, btnXuatExcel, btnNhapExcel;
+    JButton btnReset, btnThemNV, btnSuaNV, btnXoaNV, btnTimNV, btnCapTaiKhoan, btnResetMatKhau;
 
     private void addControlsNhanVien() {
         this.setLayout(new BorderLayout());
@@ -159,52 +156,38 @@ public class PnQuanLyNhanVienGUI extends JPanel {
         btnSuaNV = new JButton("Lưu");
         btnXoaNV = new JButton("Xoá");
         btnTimNV = new JButton("Tìm kiếm");
-        btnXuatExcel = new JButton("Xuất");
-        btnNhapExcel = new JButton("Nhập");
 
         Font fontButton = new Font("Tahoma", Font.PLAIN, 16);
         btnThemNV.setFont(fontButton);
         btnSuaNV.setFont(fontButton);
         btnXoaNV.setFont(fontButton);
         btnTimNV.setFont(fontButton);
-        btnXuatExcel.setFont(fontButton);
-        btnNhapExcel.setFont(fontButton);
 
         btnThemNV.setIcon(new ImageIcon("image/add-icon.png"));
         btnSuaNV.setIcon(new ImageIcon("image/Pencil-icon.png"));
         btnXoaNV.setIcon(new ImageIcon("image/delete-icon.png"));
         btnTimNV.setIcon(new ImageIcon("image/Search-icon.png"));
-        btnXuatExcel.setIcon(new ImageIcon("image/excel-icon.png"));
-        btnNhapExcel.setIcon(new ImageIcon("image/excel-icon.png"));
 
         pnButton.add(btnThemNV);
         pnButton.add(btnSuaNV);
         pnButton.add(btnXoaNV);
         pnButton.add(btnTimNV);
-        pnButton.add(btnXuatExcel);
-        pnButton.add(btnNhapExcel);
 
         Dimension btnSize = btnTimNV.getPreferredSize();
         btnThemNV.setPreferredSize(btnSize);
         btnSuaNV.setPreferredSize(btnSize);
         btnXoaNV.setPreferredSize(btnSize);
         btnTimNV.setPreferredSize(btnSize);
-        btnXuatExcel.setPreferredSize(btnSize);
-        btnNhapExcel.setPreferredSize(btnSize);
 
         JPanel pnButton2 = new TransparentPanel();
         btnCapTaiKhoan = new JButton("Cấp tài khoản");
-        btnResetMatKhau = new JButton("Mật khẩu/Quyền");
-        btnXoaTaiKhoan = new JButton("Khoá tài khoản");
+        btnResetMatKhau = new JButton("Mật khẩu");
         btnCapTaiKhoan.setIcon(new ImageIcon("image/icons8_man_with_key_32px.png"));
         btnResetMatKhau.setIcon(new ImageIcon("image/icons8_password_reset_32px.png"));
-        btnXoaTaiKhoan.setIcon(new ImageIcon("image/icons8_denied_32px.png"));
         btnCapTaiKhoan.setFont(fontButton);
         btnResetMatKhau.setFont(fontButton);
-        btnXoaTaiKhoan.setFont(fontButton);
         pnButton2.add(btnCapTaiKhoan);
         pnButton2.add(btnResetMatKhau);
-        pnButton2.add(btnXoaTaiKhoan);
 
         pnNhanVien.add(pnTopNV);
         pnNhanVien.add(pnButton);
@@ -218,7 +201,6 @@ public class PnQuanLyNhanVienGUI extends JPanel {
         dtmNhanVien.addColumn("Tên");
         dtmNhanVien.addColumn("Giới tính");
         dtmNhanVien.addColumn("Chức vụ");
-        dtmNhanVien.addColumn("Tài khoản");
         tblNhanVien = new MyTable(dtmNhanVien);
         JScrollPane scrTblNhanVien = new JScrollPane(tblNhanVien);
         pnTableNhanVien.add(scrTblNhanVien, BorderLayout.CENTER);
@@ -231,9 +213,6 @@ public class PnQuanLyNhanVienGUI extends JPanel {
         loadDataTblNhanVien();
     }
 
-    JComboBox<String> cmbQuyen;
-    JCheckBox ckbNhapHang, ckbQLSanPham, ckbQLNhanVien, ckbQLKhachHang, ckbThongKe;
-    JButton btnSuaQuyen, btnThemQuyen, btnXoaQuyen;
 
     private void addEventsNhanVien() {
 
@@ -299,19 +278,8 @@ public class PnQuanLyNhanVienGUI extends JPanel {
             }
         });
 
-        btnXuatExcel.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                xuLyXuatExcel();
-            }
-        });
 
-        btnNhapExcel.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                xuLyNhapExcel();
-            }
-        });
+
 
         btnCapTaiKhoan.addActionListener(new ActionListener() {
             @Override
@@ -324,13 +292,6 @@ public class PnQuanLyNhanVienGUI extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 xuLyResetMatKhau();
-            }
-        });
-
-        btnXoaTaiKhoan.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                xuLyKhoaTaiKhoan();
             }
         });
 
@@ -356,7 +317,7 @@ public class PnQuanLyNhanVienGUI extends JPanel {
             new MyDialog("Hãy chọn nhân viên!", MyDialog.ERROR_DIALOG);
             return;
         }
-        DlgQuyen_MatKhau dialog = new DlgQuyen_MatKhau(maNV);
+        DlgMatKhau dialog = new DlgMatKhau(maNV);
         dialog.setVisible(true);
     }
 
@@ -374,32 +335,6 @@ public class PnQuanLyNhanVienGUI extends JPanel {
         TaiKhoanBUS taiKhoanBUS = new TaiKhoanBUS();
         taiKhoanBUS.khoaTaiKhoan(txtMaNV.getText());
         loadDataTblNhanVien();
-    }
-
-    private void xuLyNhapExcel() {
-        MyDialog dlg = new MyDialog("Dữ liệu cũ sẽ bị xoá, tiếp tục?", MyDialog.WARNING_DIALOG);
-        if (dlg.getAction() != MyDialog.OK_OPTION) {
-            return;
-        }
-
-        XuLyFileExcel nhapExcel = new XuLyFileExcel();
-        nhapExcel.nhapExcel(tblNhanVien);
-
-        int row = tblNhanVien.getRowCount();
-        for (int i = 0; i < row; i++) {
-            String ho = tblNhanVien.getValueAt(i, 1) + "";
-            String ten = tblNhanVien.getValueAt(i, 2) + "";
-            String gioiTinh = tblNhanVien.getValueAt(i, 3) + "";
-            String chucVu = tblNhanVien.getValueAt(i, 4) + "";
-
-            nhanVienBUS.nhapExcel(ho, ten, gioiTinh, chucVu);
-
-        }
-    }
-
-    private void xuLyXuatExcel() {
-        XuLyFileExcel xuatExcel = new XuLyFileExcel();
-        xuatExcel.xuatExcel(tblNhanVien);
     }
 
     private void xuLyXoaNhanVien() {
@@ -484,16 +419,6 @@ public class PnQuanLyNhanVienGUI extends JPanel {
             vec.add(nv.getTen());
             vec.add(nv.getGioiTinh());
             vec.add(nv.getChucVu());
-            int trangThai = taiKhoanBUS.getTrangThai(nv.getMaNV() + "");
-            if (trangThai == 0) {
-                vec.add("Khoá");
-            }
-            else if(trangThai == 1) {
-                vec.add("Hiệu lực");
-            }
-            else {
-                vec.add("Chưa có");
-            }
             dtmNhanVien.addRow(vec);
         }
     }

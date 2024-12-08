@@ -34,7 +34,7 @@ public class PnQuanLyKhachHangGUI extends JPanel {
 
     final Color colorPanel = new Color(247, 247, 247);
     JButton btnReset;
-    JTextField txtMa, txtHo, txtTen, txtTongChiTieu, txtTukhoa, txtMaxChiTieu, txtMinchiTieu;
+    JTextField txtMa, txtHo, txtTen, txtTongChiTieu;
     JComboBox<String> cmbGioiTinh;
     JButton btnThem, btnSua, btnXoa, btnTim;
     MyTable tblKhachHang;
@@ -165,35 +165,6 @@ public class PnQuanLyKhachHangGUI extends JPanel {
         btnSua.setPreferredSize(btnSize);
         btnXoa.setPreferredSize(btnSize);
 
-        //====PANEL SEARCH=====
-        JPanel pnTimKiem = new TransparentPanel();
-        JLabel lblTimKiem = new JLabel("Từ khoá tìm");
-        lblTimKiem.setFont(font);
-        txtTukhoa = new JTextField(20);
-        txtTukhoa.setFont(font);
-        pnTimKiem.add(lblTimKiem);
-        pnTimKiem.add(txtTukhoa);
-        pnKhachHang.add(pnTimKiem);
-
-        JPanel pnTimGioiHan = new TransparentPanel();
-        JLabel lblMin = new JLabel("Chi tiêu từ:");
-        JLabel lblMax = new JLabel("đến:");
-        lblMin.setFont(font);
-        lblMax.setFont(font);
-        txtMinchiTieu = new JTextField(5);
-        txtMinchiTieu.setHorizontalAlignment(JTextField.CENTER);
-        txtMaxChiTieu = new JTextField(5);
-        txtMaxChiTieu.setHorizontalAlignment(JTextField.CENTER);
-        txtMinchiTieu.setFont(font);
-        txtMaxChiTieu.setFont(font);
-        btnTim = new JButton(new ImageIcon("image/Search-icon.png"));
-        btnTim = new JButton(new ImageIcon("image/Search-icon.png"));
-        pnTimGioiHan.add(lblMin);
-        pnTimGioiHan.add(txtMinchiTieu);
-        pnTimGioiHan.add(lblMax);
-        pnTimGioiHan.add(txtMaxChiTieu);
-        pnTimGioiHan.add(btnTim);
-        pnKhachHang.add(pnTimGioiHan);
         //=========================TABLE=====================
         dtmKhachHang = new DefaultTableModel();
         dtmKhachHang.addColumn("Mã KH");
@@ -221,9 +192,6 @@ public class PnQuanLyKhachHangGUI extends JPanel {
                 txtHo.setText("");
                 txtTen.setText("");
                 txtTongChiTieu.setText("");
-                txtTukhoa.setText("");
-                txtMinchiTieu.setText("");
-                txtMaxChiTieu.setText("");
                 cmbGioiTinh.setSelectedIndex(0);
             }
         });
@@ -248,44 +216,6 @@ public class PnQuanLyKhachHangGUI extends JPanel {
 
             @Override
             public void mouseExited(MouseEvent e) {
-            }
-        });
-
-        txtTukhoa.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                xuLyLiveSearch();
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                xuLyLiveSearch();
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                xuLyLiveSearch();
-            }
-        });
-
-        txtMinchiTieu.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                txtMaxChiTieu.requestFocus();
-            }
-        });
-
-        txtMaxChiTieu.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                btnTim.doClick();
-            }
-        });
-
-        btnTim.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                xuLyTimKiemTheoKhoang();
             }
         });
 
@@ -343,17 +273,6 @@ public class PnQuanLyKhachHangGUI extends JPanel {
         }
     }
 
-    private void xuLyTimKiemTheoKhoang() {
-        ArrayList<KhachHang> dskh = khachHangBUS.timKiemKhachHang(txtMinchiTieu.getText(), txtMaxChiTieu.getText());
-        if (dskh == null)
-            return;
-        loadDataLenTableKhachHang(dskh);
-    }
-
-    private void xuLyLiveSearch() {
-        ArrayList<KhachHang> dskh = khachHangBUS.timKiemKhachHang(txtTukhoa.getText());
-        loadDataLenTableKhachHang(dskh);
-    }
 
     private void xuLyThemKhachHang() {
         if (khachHangBUS.themKhachHang(txtHo.getText(), txtTen.getText(), cmbGioiTinh.getSelectedItem() + ""))

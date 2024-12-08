@@ -24,15 +24,13 @@ public class MainQuanLyGUI extends JFrame {
         this.setVisible(true);
     }
 
-    JLabel btnDoiMatKhau;
-    JPanel pnTitle, pnMenuLeft, pnCard, pnBanHang, pnKhuyenMai, pnNhapHang, pnSanPham, pnNhanVien, pnKhachHang, pnThongKe;
+    JPanel pnTitle, pnMenuLeft, pnCard, pnBanHang, pnNhapHang, pnSanPham, pnNhanVien, pnKhachHang;
     PnQuanLyBanHangGUI banHangPanel;
-    PnQuanLyKhuyenMaiGUI khuyenMaiPanel;
     PnQuanLySanPhamGUI sanPhamPanel;
     PnQuanLyNhanVienGUI nhanVienPanel;
     PnQuanLyKhachHangGUI khachHangPanel;
 
-    JLabel btnClose, btnMinimize, lblBanHang, lblKhuyenMai, lblNhapHang, lblSanPham, lblNhanVien, lblKhachHang, lblThongKe;
+    JLabel btnClose, btnMinimize, lblBanHang, lblNhapHang, lblSanPham, lblNhanVien, lblKhachHang, lblThongKe;
     final Color clLeftItem = new Color(63, 74, 89);
     final Color clLeftItemHover = new Color(72, 88, 107);
     final Color clLeftItemSelected = new Color(51, 202, 187);
@@ -57,11 +55,6 @@ public class MainQuanLyGUI extends JFrame {
         pnTitle.setPreferredSize(new Dimension(width, 46));
         pnTitle.setBackground(new Color(242, 153, 74));
 
-        btnDoiMatKhau = new JLabel(new ImageIcon("image/ManagerUI/icons8_gear_46px.png"));
-        btnDoiMatKhau.setToolTipText("Đổi mật khẩu");
-        btnDoiMatKhau.setBounds(0, 0, 46, 46);
-        btnDoiMatKhau.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        pnTitle.add(btnDoiMatKhau);
 
         JLabel lblTitleText = new JLabel(new ImageIcon("image/ManagerUI/title-text.png"));
         lblTitleText.setBounds(width / 2 - 428 / 2, 3, 428, 38);
@@ -93,7 +86,6 @@ public class MainQuanLyGUI extends JFrame {
         pnMenuLeft.add(lblAvatar);
 
         lblBanHang = new JLabel(new ImageIcon("image/ManagerUI/lblBanHang.png"));
-        lblKhuyenMai = new JLabel(new ImageIcon("image/ManagerUI/lblKhuyenMai.png"));
         lblNhapHang = new JLabel(new ImageIcon("image/ManagerUI/lblNhapHang.png"));
         lblSanPham = new JLabel(new ImageIcon("image/ManagerUI/lblSanPham.png"));
         lblNhanVien = new JLabel(new ImageIcon("image/ManagerUI/lblNhanVien.png"));
@@ -102,7 +94,6 @@ public class MainQuanLyGUI extends JFrame {
 
         listMenuLeft = new ArrayList<>();
         listMenuLeft.add(lblBanHang);
-        listMenuLeft.add(lblKhuyenMai);
         listMenuLeft.add(lblSanPham);
         listMenuLeft.add(lblNhanVien);
         listMenuLeft.add(lblKhachHang);
@@ -120,7 +111,6 @@ public class MainQuanLyGUI extends JFrame {
 
         lblBanHang.setBackground(clLeftItemSelected);
         lblBanHang.setVisible(true);
-        lblKhuyenMai.setVisible(true);
 
         pnMain.add(pnMenuLeft, BorderLayout.WEST);
 
@@ -132,30 +122,21 @@ public class MainQuanLyGUI extends JFrame {
         pnCard = new JPanel(cardMenuLeftGroup);
 
         pnBanHang = new JPanel();
-        pnKhuyenMai = new JPanel();
         pnNhapHang = new JPanel();
         pnSanPham = new JPanel();
         pnNhanVien = new JPanel();
         pnKhachHang = new JPanel();
-        pnThongKe = new JPanel();
 
         pnCard.add(pnBanHang, "1");
-        pnCard.add(pnKhuyenMai, "2");
-        pnCard.add(pnNhapHang, "3");
-        pnCard.add(pnSanPham, "4");
-        pnCard.add(pnNhanVien, "5");
-        pnCard.add(pnKhachHang, "6");
-        pnCard.add(pnThongKe, "7");
+        pnCard.add(pnNhapHang, "2");
+        pnCard.add(pnSanPham, "3");
+        pnCard.add(pnNhanVien, "4");
+        pnCard.add(pnKhachHang, "5");
 
         //==========ADD PANEL BÁN HÀNG + KHUYẾN MÃI (Ko phân quyền)==========
         banHangPanel = new PnQuanLyBanHangGUI();
         pnBanHang.setLayout(new BorderLayout());
         pnBanHang.add(banHangPanel, BorderLayout.CENTER);
-
-        khuyenMaiPanel = new PnQuanLyKhuyenMaiGUI();
-        pnKhuyenMai.setLayout(new BorderLayout());
-        pnKhuyenMai.add(khuyenMaiPanel, BorderLayout.CENTER);
-
 
 
         sanPhamPanel = new PnQuanLySanPhamGUI();
@@ -199,32 +180,6 @@ public class MainQuanLyGUI extends JFrame {
             }
         });
 
-        btnDoiMatKhau.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                new DlgDoiMatKhau().setVisible(true);
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                btnDoiMatKhau.setOpaque(true);
-                btnDoiMatKhau.setBackground(clLeftItemHover);
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                btnDoiMatKhau.setOpaque(false);
-                btnDoiMatKhau.setBackground(new Color(0, 0, 0, 0));
-            }
-        });
 
         btnMinimize.addMouseListener(new MouseListener() {
             @Override
@@ -289,18 +244,16 @@ public class MainQuanLyGUI extends JFrame {
                     String cardName = "";
                     if (lbl == lblBanHang) {
                         cardName = "1";
-                    } else if (lbl == lblKhuyenMai) {
-                        cardName = "2";
                     } else if (lbl == lblNhapHang) {
-                        cardName = "3";
+                        cardName = "2";
                     } else if (lbl == lblSanPham) {
-                        cardName = "4";
+                        cardName = "3";
                     } else if (lbl == lblNhanVien) {
-                        cardName = "5";
+                        cardName = "4";
                     } else if (lbl == lblKhachHang) {
-                        cardName = "6";
+                        cardName = "5";
                     } else {
-                        cardName = "7";
+                        cardName = "6";
                     }
                     cardMenuLeftGroup.show(pnCard, cardName);
                 }
