@@ -28,7 +28,6 @@ public class MainQuanLyGUI extends JFrame {
     JPanel pnTitle, pnMenuLeft, pnCard, pnBanHang, pnKhuyenMai, pnNhapHang, pnSanPham, pnNhanVien, pnKhachHang, pnThongKe;
     PnQuanLyBanHangGUI banHangPanel;
     PnQuanLyKhuyenMaiGUI khuyenMaiPanel;
-    PnQuanLyNhapHangGUI nhapHangPanel;
     PnQuanLySanPhamGUI sanPhamPanel;
     PnQuanLyNhanVienGUI nhanVienPanel;
     PnQuanLyKhachHangGUI khachHangPanel;
@@ -157,12 +156,7 @@ public class MainQuanLyGUI extends JFrame {
         pnKhuyenMai.setLayout(new BorderLayout());
         pnKhuyenMai.add(khuyenMaiPanel, BorderLayout.CENTER);
 
-        //======XỬ LÝ PHÂN QUYỀN=======
 
-        nhapHangPanel = new PnQuanLyNhapHangGUI();
-        pnNhapHang.setLayout(new BorderLayout());
-        pnNhapHang.add(nhapHangPanel, BorderLayout.CENTER);
-        lblNhapHang.setVisible(true);
 
         sanPhamPanel = new PnQuanLySanPhamGUI();
         pnSanPham.setLayout(new BorderLayout());
