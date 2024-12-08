@@ -157,27 +157,27 @@ CREATE TABLE `hoadon` (
 --
 
 INSERT INTO `hoadon` (`MaHD`, `MaKH`, `MaNV`, `NgayLap`, `TongTien`, `GhiChu`) VALUES
-(39, 1, 0, '2024-12-08', 438000, 'Đã thanh toán'),
-(40, 1, 0, '2024-12-08', 807000, 'Đã thanh toán'),
-(41, 2, 0, '2024-12-08', 1085000, 'Đã thanh toán'),
-(42, 25, 0, '2024-12-08', 531000, 'Đã thanh toán'),
-(43, 24, 0, '2024-12-08', 916000, 'Đã thanh toán'),
-(44, 23, 0, '2024-12-08', 724000, 'Đã thanh toán'),
-(45, 22, 0, '2024-12-08', 1356000, 'Đã thanh toán'),
-(46, 21, 0, '2024-12-08', 648000, 'Đã thanh toán'),
-(47, 20, 0, '2024-12-08', 896000, 'Đã thanh toán'),
-(48, 19, 0, '2024-12-08', 1907000, 'Đã thanh toán'),
-(49, 18, 0, '2024-12-08', 660000, 'Đã thanh toán'),
-(50, 17, 0, '2024-12-08', 936000, 'Đã thanh toán'),
-(51, 16, 0, '2024-12-08', 723000, 'Đã thanh toán'),
-(52, 15, 0, '2024-12-08', 593000, 'Đã thanh toán'),
-(53, 27, 0, '2024-12-08', 283000, 'Đã thanh toán'),
-(54, 28, 0, '2024-12-08', 579000, 'Đã thanh toán'),
-(55, 29, 0, '2024-12-08', 380000, 'Đã thanh toán'),
-(56, 30, 0, '2024-12-08', 810000, 'Đã thanh toán'),
-(57, 31, 0, '2024-12-08', 806000, 'Đã thanh toán'),
-(58, 32, 0, '2024-12-08', 562000, 'Đã thanh toán'),
-(59, 33, 0, '2024-12-08', 1498000, 'Đã thanh toán');
+(39, 1, 1, '2024-12-08', 438000, 'Đã thanh toán'),
+(40, 1, 1, '2024-12-08', 807000, 'Đã thanh toán'),
+(41, 2, 2, '2024-12-08', 1085000, 'Đã thanh toán'),
+(42, 25, 3, '2024-12-08', 531000, 'Đã thanh toán'),
+(43, 24, 1, '2024-12-08', 916000, 'Đã thanh toán'),
+(44, 23, 2, '2024-12-08', 724000, 'Đã thanh toán'),
+(45, 22, 3, '2024-12-08', 1356000, 'Đã thanh toán'),
+(46, 21, 4, '2024-12-08', 648000, 'Đã thanh toán'),
+(47, 20, 1, '2024-12-08', 896000, 'Đã thanh toán'),
+(48, 19, 2, '2024-12-08', 1907000, 'Đã thanh toán'),
+(49, 18, 3, '2024-12-08', 660000, 'Đã thanh toán'),
+(50, 17, 4, '2024-12-08', 936000, 'Đã thanh toán'),
+(51, 16, 2, '2024-12-08', 723000, 'Đã thanh toán'),
+(52, 15, 1, '2024-12-08', 593000, 'Đã thanh toán'),
+(53, 27, 5, '2024-12-08', 283000, 'Đã thanh toán'),
+(54, 28, 4, '2024-12-08', 579000, 'Đã thanh toán'),
+(55, 29, 2, '2024-12-08', 380000, 'Đã thanh toán'),
+(56, 30, 1, '2024-12-08', 810000, 'Đã thanh toán'),
+(57, 31, 1, '2024-12-08', 806000, 'Đã thanh toán'),
+(58, 32, 3, '2024-12-08', 562000, 'Đã thanh toán'),
+(59, 33, 3, '2024-12-08', 1498000, 'Đã thanh toán');
 
 
 -- --------------------------------------------------------
@@ -330,19 +330,22 @@ CREATE TABLE `taikhoan` (
 INSERT INTO `taikhoan` (`MaNV`, `TenDangNhap`, `MatKhau`, `TrangThai`) VALUES
 (3, 'admin', 'admin', 1);
 
+--
+-- Chỉ mục cho các bảng đã đổ
+--
 
 --
 -- Chỉ mục cho bảng `cthoadon`
 --
 ALTER TABLE `cthoadon`
-  ADD PRIMARY KEY (`MaHD`,`MaSP`),
+    ADD PRIMARY KEY (`MaHD`,`MaSP`),
   ADD KEY `cthoadon_ibfk_1` (`MaHD`);
 
 --
 -- Chỉ mục cho bảng `hoadon`
 --
 ALTER TABLE `hoadon`
-  ADD PRIMARY KEY (`MaHD`),
+    ADD PRIMARY KEY (`MaHD`),
   ADD KEY `hoadon_ibfk_1` (`MaNV`),
   ADD KEY `hoadon_ibfk_2` (`MaKH`);
 
@@ -350,102 +353,100 @@ ALTER TABLE `hoadon`
 -- Chỉ mục cho bảng `khachhang`
 --
 ALTER TABLE `khachhang`
-  ADD PRIMARY KEY (`MaKH`);
+    ADD PRIMARY KEY (`MaKH`);
 
 --
 -- Chỉ mục cho bảng `loai`
 --
 ALTER TABLE `loai`
-  ADD PRIMARY KEY (`MaLoai`);
+    ADD PRIMARY KEY (`MaLoai`);
+
 
 --
 -- Chỉ mục cho bảng `nhanvien`
 --
 ALTER TABLE `nhanvien`
-  ADD PRIMARY KEY (`MaNV`);
+    ADD PRIMARY KEY (`MaNV`);
 
 --
 -- Chỉ mục cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
-  ADD PRIMARY KEY (`MaSP`),
+    ADD PRIMARY KEY (`MaSP`),
   ADD KEY `sanpham_ibfk_1` (`MaLoai`);
 
 --
 -- Chỉ mục cho bảng `taikhoan`
 --
 ALTER TABLE `taikhoan`
-  ADD PRIMARY KEY (`MaNV`);
+    ADD PRIMARY KEY (`MaNV`);
 
 --
 -- AUTO_INCREMENT cho các bảng đã đổ
 --
 
-
 --
 -- AUTO_INCREMENT cho bảng `hoadon`
 --
 ALTER TABLE `hoadon`
-  MODIFY `MaHD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+    MODIFY `MaHD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT cho bảng `khachhang`
 --
 ALTER TABLE `khachhang`
-  MODIFY `MaKH` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+    MODIFY `MaKH` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT cho bảng `loai`
 --
 ALTER TABLE `loai`
-  MODIFY `MaLoai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
+    MODIFY `MaLoai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `nhanvien`
 --
 ALTER TABLE `nhanvien`
-  MODIFY `MaNV` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+    MODIFY `MaNV` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 
 --
 -- AUTO_INCREMENT cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `MaSP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
+    MODIFY `MaSP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
 
 --
 -- AUTO_INCREMENT cho bảng `taikhoan`
 --
 ALTER TABLE `taikhoan`
-  MODIFY `MaNV` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+    MODIFY `MaNV` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
+--
+-- Các ràng buộc cho các bảng đã đổ
+--
 
 --
 -- Các ràng buộc cho bảng `cthoadon`
 --
 ALTER TABLE `cthoadon`
-  ADD CONSTRAINT `cthoadon_ibfk_1` FOREIGN KEY (`MaHD`) REFERENCES `hoadon` (`MaHD`) ON DELETE CASCADE ON UPDATE CASCADE;
+    ADD CONSTRAINT `cthoadon_ibfk_1` FOREIGN KEY (`MaHD`) REFERENCES `hoadon` (`MaHD`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `hoadon`
 --
 ALTER TABLE `hoadon`
-  ADD CONSTRAINT `hoadon_ibfk_1` FOREIGN KEY (`MaNV`) REFERENCES `nhanvien` (`MaNV`) ON DELETE CASCADE ON UPDATE CASCADE,
+    ADD CONSTRAINT `hoadon_ibfk_1` FOREIGN KEY (`MaNV`) REFERENCES `nhanvien` (`MaNV`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `hoadon_ibfk_2` FOREIGN KEY (`MaKH`) REFERENCES `khachhang` (`MaKH`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
-  ADD CONSTRAINT `sanpham_ibfk_1` FOREIGN KEY (`MaLoai`) REFERENCES `loai` (`MaLoai`) ON DELETE CASCADE ON UPDATE CASCADE;
+    ADD CONSTRAINT `sanpham_ibfk_1` FOREIGN KEY (`MaLoai`) REFERENCES `loai` (`MaLoai`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `taikhoan`
 --
 ALTER TABLE `taikhoan`
-  ADD CONSTRAINT `taikhoan_ibfk_1` FOREIGN KEY (`MaNV`) REFERENCES `nhanvien` (`MaNV`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+    ADD CONSTRAINT `taikhoan_ibfk_1` FOREIGN KEY (`MaNV`) REFERENCES `nhanvien` (`MaNV`) ON DELETE CASCADE ON UPDATE CASCADE;
