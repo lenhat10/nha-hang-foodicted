@@ -89,7 +89,7 @@ public class PnQuanLyBanHangGUI extends JPanel {
         lblTabbedBanHang.setIcon(tabbedSelected);
         lblTabbedBanHang.setBounds(2, 2, 140, 37);
         lblTabbedBanHang.setFont(font);
-        lblTabbedBanHang.setForeground(Color.white);
+        lblTabbedBanHang.setForeground(Color.black);
         lblTabbedBanHang.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         lblTabbedHoaDon = new JLabel("Hoá đơn");
@@ -98,7 +98,7 @@ public class PnQuanLyBanHangGUI extends JPanel {
         lblTabbedHoaDon.setIcon(tabbedDefault);
         lblTabbedHoaDon.setBounds(143, 2, 140, 37);
         lblTabbedHoaDon.setFont(font);
-        lblTabbedHoaDon.setForeground(Color.white);
+        lblTabbedHoaDon.setForeground(Color.black);
         lblTabbedHoaDon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         pnTop.add(lblTabbedBanHang);

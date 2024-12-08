@@ -31,9 +31,9 @@ public class MainQuanLyGUI extends JFrame {
     PnQuanLyKhachHangGUI khachHangPanel;
 
     JLabel btnClose, btnMinimize, lblBanHang, lblSanPham, lblNhanVien, lblKhachHang;
-    final Color clLeftItem = new Color(63, 74, 89);
+    final Color clLeftItem = new Color(26, 26, 29);
     final Color clLeftItemHover = new Color(72, 88, 107);
-    final Color clLeftItemSelected = new Color(51, 202, 187);
+    final Color clLeftItemSelected = new Color(230, 193, 16);
     ArrayList<JLabel> listMenuLeft;
     CardLayout cardMenuLeftGroup = new CardLayout();
 
@@ -53,7 +53,8 @@ public class MainQuanLyGUI extends JFrame {
          */
         pnTitle = new JPanel(null);
         pnTitle.setPreferredSize(new Dimension(width, 46));
-        pnTitle.setBackground(new Color(242, 153, 74));
+        pnTitle.setBackground(new Color(255, 255, 255));
+        pnTitle.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
 
 
         JLabel lblTitleText = new JLabel(new ImageIcon("image/ManagerUI/title-text.png"));
@@ -127,7 +128,7 @@ public class MainQuanLyGUI extends JFrame {
         pnCard.add(pnNhanVien, "3");
         pnCard.add(pnKhachHang, "4");
 
-        //==========ADD PANEL BÁN HÀNG + KHUYẾN MÃI (Ko phân quyền)==========
+        //==========ADD PANEL BÁN HÀNG =========
         banHangPanel = new PnQuanLyBanHangGUI();
         pnBanHang.setLayout(new BorderLayout());
         pnBanHang.add(banHangPanel, BorderLayout.CENTER);
