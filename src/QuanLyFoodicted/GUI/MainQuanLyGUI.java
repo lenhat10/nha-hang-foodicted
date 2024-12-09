@@ -79,7 +79,20 @@ public class MainQuanLyGUI extends JFrame {
          */
         pnMenuLeft = new JPanel();
         pnMenuLeft.setPreferredSize(new Dimension(250, height - pnTitle.getHeight()));
-        pnMenuLeft.setBackground(clLeftItem);
+        pnMenuLeft = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                try {
+                    ImageIcon icon = new ImageIcon("image/ManagerUI/slidebar-background.png");
+                    Image image = icon.getImage();
+                    g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
         pnMenuLeft.setLayout(new BoxLayout(pnMenuLeft, BoxLayout.Y_AXIS));
 
 
