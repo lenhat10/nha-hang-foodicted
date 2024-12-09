@@ -170,7 +170,7 @@ public class PnQuanLyNhanVienGUI extends JPanel {
         btnCapTaiKhoan = new JButton("Cấp tài khoản");
         btnCapTaiKhoan.setIcon(new ImageIcon("image/icons8_man_with_key_32px.png"));
         btnCapTaiKhoan.setFont(fontButton);
-        pnButton2.add(btnCapTaiKhoan);
+        pnButton.add(btnCapTaiKhoan);
 
         pnNhanVien.add(pnTopNV);
         pnNhanVien.add(pnButton);
