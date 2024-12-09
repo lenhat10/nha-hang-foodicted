@@ -82,6 +82,7 @@ public class MainQuanLyGUI extends JFrame {
         pnMenuLeft.setBackground(clLeftItem);
         pnMenuLeft.setLayout(new BoxLayout(pnMenuLeft, BoxLayout.Y_AXIS));
 
+
         JLabel lblAvatar = new JLabel(new ImageIcon("image/ManagerUI/avatar.png"), JLabel.CENTER);
         lblAvatar.setPreferredSize(new Dimension(250, 210));
         pnMenuLeft.add(lblAvatar);
