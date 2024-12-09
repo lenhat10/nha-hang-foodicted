@@ -400,7 +400,7 @@ public class PnQuanLyBanHangGUI extends JPanel {
 
         JPanel pnTitleHoaDon = new TransparentPanel(new FlowLayout());
         JLabel lblTitleHoaDon = new JLabel("THÔNG TIN HOÁ ĐƠN");
-        lblTitleHoaDon.setFont(new Font("Tahoma", Font.BOLD, 28));
+        lblTitleHoaDon.setFont(new Font("Tahoma", Font.BOLD, 20));
         btnResetHoaDon = new JButton(new ImageIcon("image/Refresh-icon.png"));
         btnResetHoaDon.setPreferredSize(new Dimension(40, 40));
         pnTitleHoaDon.add(lblTitleHoaDon);
@@ -505,7 +505,7 @@ public class PnQuanLyBanHangGUI extends JPanel {
 
         JLabel lblTitleCTHD = new JLabel("CHI TIẾT HOÁ ĐƠN");
         JPanel pnTitleCT = new TransparentPanel();
-        lblTitleCTHD.setFont(new Font("Tahoma", Font.BOLD, 28));
+        lblTitleCTHD.setFont(new Font("Tahoma", Font.BOLD, 20));
 
         btnResetCTHoaDon = new JButton(new ImageIcon("image/Refresh-icon.png"));
         btnResetCTHoaDon.setPreferredSize(new Dimension(40, 40));
