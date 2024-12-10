@@ -377,7 +377,6 @@ public class PnQuanLySanPhamGUI extends JPanel {
         for (LoaiSP loai : dsl) {
             cmbLoai.addItem(loai.getMaLoai() + " - " + loai.getTenLoai());
         }
-        cmbLoai.addItem("Khác...");
     }
 
     private void xuLyThemLoai() {

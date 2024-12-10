@@ -213,7 +213,7 @@ INSERT INTO `khachhang` (`MaKH`, `Ho`, `Ten`, `GioiTinh`, `TongChiTieu`, `TinhTr
 (29, 'Nguyễn Hoàng', 'Hà', 'Nam', 380000, 1),
 (30, 'Vũ Ngọc Minh', 'Thu', 'Nữ', 810000, 1),
 (31, 'Nguyễn Hoàng', 'Nguyên', 'Nam', 806000, 1),
-(32, 'Nguyễn Huy', 'Hoàng', 'Nam', 562000, 1),
+(32, 'Phạm Huy', 'Hoàng', 'Nam', 562000, 1),
 (33, 'Lê Hà Quỳnh', 'Nhi', 'Nữ', 1498000, 1);
 
 -- --------------------------------------------------------
