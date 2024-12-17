@@ -235,7 +235,7 @@ INSERT INTO `loai` (`MaLoai`, `TenLoai`) VALUES
 (1, 'Món ăn'),
 (2, 'Nước uống'),
 (3, 'Món tráng miệng'),
-(4, 'Them loai');
+(4, 'Thêm loại');
 -- --------------------------------------------------------
 
 --
