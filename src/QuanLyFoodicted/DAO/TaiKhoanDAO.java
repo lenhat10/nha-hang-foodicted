@@ -35,31 +35,6 @@ public class TaiKhoanDAO {
         return false;
     }
 
-    public String getTenDangNhapTheoMa(int maNV) {
-        try {
-            String sql = "SELECT TenDangNhap FROM TaiKhoan WHERE MaNV=" + maNV;
-            Statement st = MyConnect.conn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            if (rs.next()) {
-                return rs.getString(1);
-            }
-        } catch (Exception e) {
-        }
-        return "";
-    }
-
-    public boolean datLaiMatKhau(int maNV, String tenDangNhap) {
-        try {
-            String sql = "UPDATE TaiKhoan SET MatKhau=? WHERE MaNV=?";
-            PreparedStatement pre = MyConnect.conn.prepareStatement(sql);
-            pre.setString(1, tenDangNhap);
-            pre.setInt(2, maNV);
-            return pre.executeUpdate() > 0;
-        } catch (Exception e) {
-        }
-        return false;
-    }
-
     public boolean khoaTaiKhoan(int maNV) {
         try {
             String sql = "UPDATE TaiKhoan SET TrangThai=0 WHERE MaNV=?";
@@ -82,29 +57,4 @@ public class TaiKhoanDAO {
         return false;
     }
 
-    public boolean doiMatKhau(String matKhauCu, String matKhauMoi) {
-        try {
-            String sql = "UPDATE TaiKhoan SET MatKhau=? WHERE MaNV=? AND MatKhau=?";
-            PreparedStatement pre = MyConnect.conn.prepareStatement(sql);
-            pre.setString(1, matKhauMoi);
-            pre.setInt(2, DangNhapBUS.taiKhoanLogin.getMaNhanVien());
-            pre.setString(3, matKhauCu);
-            return pre.executeUpdate() > 0;
-        } catch (Exception e) {
-        }
-        return false;
-    }
-
-    public int getTrangThai(int ma) {
-        try {
-            String sql = "SELECT TrangThai FROM TaiKhoan WHERE MaNV=" + ma;
-            Statement st = MyConnect.conn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
-                return rs.getInt(1);
-            }
-        } catch (Exception e) {
-        }
-        return -1;
-    }
 }

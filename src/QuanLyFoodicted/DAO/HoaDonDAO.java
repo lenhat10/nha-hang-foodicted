@@ -62,30 +62,4 @@ public class HoaDonDAO {
         return -1;
     }
 
-    public ArrayList<HoaDon> getListHoaDon(Date dateMin, Date dateMax) {
-        try {
-            String sql = "SELECT * FROM hoadon WHERE NgayLap BETWEEN CAST(? AS DATE) AND CAST(? AS DATE)";
-            PreparedStatement pre = MyConnect.conn.prepareStatement(sql);
-            pre.setDate(1, dateMin);
-            pre.setDate(2, dateMax);
-            ResultSet rs = pre.executeQuery();
-
-            ArrayList<HoaDon> dshd = new ArrayList<>();
-
-            while (rs.next()) {
-                HoaDon hd = new HoaDon();
-                hd.setMaHD(rs.getInt(1));
-                hd.setMaKH(rs.getInt(2));
-                hd.setMaNV(rs.getInt(3));
-                hd.setNgayLap(rs.getDate(4));
-                hd.setTongTien(rs.getInt(5));
-                hd.setGhiChu(rs.getString(6));
-                dshd.add(hd);
-            }
-            return dshd;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 }

@@ -30,7 +30,6 @@ public class DangNhapBUS {
         } else {
             xuLyGhiNhoDangNhap(user, password, selected);
             new MyDialog("Đăng nhập thành công!", MyDialog.SUCCESS_DIALOG);
-//            new MyDialog("Vì tình hình dịch Covid phức tạp, cửa hàng chỉ thực hiện bán mang về!", MyDialog.INFO_DIALOG);
         }
         return account;
     }

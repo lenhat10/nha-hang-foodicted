@@ -79,18 +79,6 @@ public class NhanVienBUS {
         return flag;
     }
 
-    public ArrayList<NhanVien> timNhanVien(String tuKhoa) {
-        tuKhoa = tuKhoa.toLowerCase();
-        ArrayList<NhanVien> dsnv = new ArrayList<>();
-        for (NhanVien nv : listNhanVien) {
-            if (nv.getHo().toLowerCase().contains(tuKhoa) || nv.getTen().toLowerCase().contains(tuKhoa) ||
-                    nv.getGioiTinh().toLowerCase().contains(tuKhoa) || nv.getChucVu().toLowerCase().contains(tuKhoa)) {
-                dsnv.add(nv);
-            }
-        }
-        return dsnv;
-    }
-
     public boolean xoaNhanVien(String ma) {
         try {
             int maNV = Integer.parseInt(ma);

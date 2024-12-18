@@ -6,24 +6,6 @@ import MyCustom.MyDialog;
 public class TaiKhoanBUS {
 
     private TaiKhoanDAO taiKhoanDAO = new TaiKhoanDAO();
-
-    public String getTenDangNhapTheoMa(String ma) {
-        int maNV = Integer.parseInt(ma);
-        return taiKhoanDAO.getTenDangNhapTheoMa(maNV);
-    }
-
-
-    public void datLaiMatKhau(String ma, String tenDangNhap) {
-        int maNV = Integer.parseInt(ma);
-        boolean flag = taiKhoanDAO.datLaiMatKhau(maNV, tenDangNhap);
-        if (flag) {
-            new MyDialog("Đặt lại thành công! Mật khẩu mới là: " + tenDangNhap, MyDialog.SUCCESS_DIALOG);
-        } else {
-            new MyDialog("Đặt lại thất bại!", MyDialog.ERROR_DIALOG);
-        }
-    }
-
-
     public boolean kiemTraTrungTenDangNhap(String tenDangNhap) {
         return taiKhoanDAO.kiemTraTrungTenDangNhap(tenDangNhap);
     }
@@ -69,25 +51,6 @@ public class TaiKhoanBUS {
         } else {
             new MyDialog("Mở khoá tài khoản thất bại!", MyDialog.ERROR_DIALOG);
         }
-    }
-
-    public boolean doiMatKhau(String matKhauCu, String matKhauMoi, String nhapLaiMatKhau) {
-        if(!matKhauMoi.equals(nhapLaiMatKhau)) {
-            new MyDialog("Mật khẩu mới không khớp!", MyDialog.ERROR_DIALOG);
-            return false;
-        }
-        boolean flag = taiKhoanDAO.doiMatKhau(matKhauCu, matKhauMoi);
-        if (flag) {
-            new MyDialog("Đổi thành công!", MyDialog.SUCCESS_DIALOG);
-        } else {
-            new MyDialog("Mật khẩu cũ nhập sai!", MyDialog.ERROR_DIALOG);
-        }
-        return flag;
-    }
-    
-    public int getTrangThai(String maNV) {
-        int ma = Integer.parseInt(maNV);
-        return taiKhoanDAO.getTrangThai(ma);
     }
 
 }

@@ -17,7 +17,6 @@ public class DlgThemKhachHang extends javax.swing.JDialog {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
@@ -124,7 +123,7 @@ public class DlgThemKhachHang extends javax.swing.JDialog {
         if (flag) {
             this.dispose();
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbGioiTinh;

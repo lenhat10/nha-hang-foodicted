@@ -33,28 +33,6 @@ public class NhanVienDAO {
         return null;
     }
 
-    public NhanVien getNhanVien(int maNV) {
-        NhanVien nv = null;
-        try {
-            String sql = "SELECT * FROM NhanVien WHERE MaNV=?";
-            PreparedStatement pre = MyConnect.conn.prepareStatement(sql);
-            pre.setInt(0, maNV);
-            ResultSet rs = pre.executeQuery();
-            while (rs.next()) {
-                nv = new NhanVien();
-                nv.setMaNV(rs.getInt(1));
-                nv.setHo(rs.getString(2));
-                nv.setTen(rs.getString(3));
-                nv.setGioiTinh(rs.getString(4));
-                nv.setChucVu(rs.getString(5));
-            }
-        } catch (SQLException e) {
-            return null;
-        }
-
-        return nv;
-    }
-
     public boolean updateNhanVien(NhanVien nv) {
         boolean result = false;
         try {

@@ -21,27 +21,6 @@ public class KhachHangBUS {
         return listKhachHang;
     }
 
-    public ArrayList<KhachHang> timKiemKhachHang(String txtMin, String txtMax) {
-        if (txtMax.trim().equals("") && txtMin.trim().equals(""))
-            return listKhachHang;
-        try {
-            ArrayList<KhachHang> dskh = new ArrayList<>();
-            txtMin = txtMin.replace(",", "");
-            txtMax = txtMax.replace(",", "");
-            int min = Integer.parseInt(txtMin);
-            int max = Integer.parseInt(txtMax);
-            for (KhachHang kh : listKhachHang) {
-                if (kh.getTongChiTieu() >= min && kh.getTongChiTieu() <= max) {
-                    dskh.add(kh);
-                }
-            }
-            return dskh;
-        } catch (Exception e) {
-            new MyDialog("Hãy nhập giá trị nguyên phù hợp!", MyDialog.ERROR_DIALOG);
-        }
-        return null;
-    }
-
     public ArrayList<KhachHang> timKiemKhachHang(String tuKhoa) {
         tuKhoa = tuKhoa.toLowerCase();
         ArrayList<KhachHang> dskh = new ArrayList<>();

@@ -39,26 +39,6 @@ public class KhachHangDAO {
         return null;
     }
 
-    public KhachHang getKhachHang(int maKH) {
-        KhachHang kh = null;
-        try {
-            String sql = "SELECT * FROM khachhang WHERE MaKH=? AND TinhTrang=1";
-            PreparedStatement prep = MyConnect.conn.prepareStatement(sql);
-            prep.setInt(1, maKH);
-            ResultSet rs = prep.executeQuery();
-            while (rs.next()) {
-                kh = new KhachHang();
-                kh.setMaKH(rs.getInt(1));
-                kh.setHo(rs.getString(2));
-                kh.setTen(rs.getString(3));
-                kh.setGioiTinh(rs.getString(4));
-                kh.setTongChiTieu(rs.getInt(5));
-            }
-        } catch (SQLException ex) {
-            return null;
-        }
-        return kh;
-    }
 
     public boolean addKhachHang(KhachHang kh) {
         boolean result = false;
@@ -106,15 +86,4 @@ public class KhachHangDAO {
         return result;
     }
 
-    public boolean updateTongChiTieu(int maKH, int tongChiTieu) {
-        boolean result = false;
-        try {
-            String sql = "UPDATE khachhang SET TongChiTieu=" + tongChiTieu + " WHERE MaKH=" + maKH;
-            Statement stmt = MyConnect.conn.createStatement();
-            result = stmt.executeUpdate(sql) > 0;
-        } catch (SQLException ex) {
-            return false;
-        }
-        return result;
-    }
 }
